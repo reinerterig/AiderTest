@@ -100,7 +100,16 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
             isLogging = true
             startButton.setTitle("Stop", for: .normal)
             startLogging()
-        }
+    var chart: LineChartView!
+    var isLogging: Bool = false
+    var startTime: Date?
+    var weightData: [ChartDataEntry] = []
+    var flowData: [ChartDataEntry] = []
+    var isDisplayingWeightData: Bool = true
+
+    @objc func toggleChartDisplay() {
+        isDisplayingWeightData = !isDisplayingWeightData
+        updateChart()
     }
 
     func startLogging() {
@@ -121,27 +130,29 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
         weightData.append(ChartDataEntry(x: time, y: Double(weight)))
         flowData.append(ChartDataEntry(x: time, y: Double(flow)))
 
-        // Update the charts
+        // Update the chart
         DispatchQueue.main.async {
-            self.updateCharts()
+            self.updateChart()
         }
     }
 
-    func updateCharts() {
-        // Update the weight chart
-        let weightDataSet = LineChartDataSet(entries: weightData, label: "Weight")
-        weightDataSet.colors = [NSUIColor.blue]
-        weightDataSet.drawCirclesEnabled = false // Disable dots
-        weightDataSet.mode = .cubicBezier // Enable cubic bezier curve
-        weightChart.data = LineChartData(dataSet: weightDataSet)
+    func updateChart() {
+        let data: [ChartDataEntry]
+        let label: String
+        let color: NSUIColor
+        if isDisplayingWeightData {
+            data = weightData
+            label = "Weight"
+            color = NSUIColor.blue
+        } else {
+            data = flowData
+            label = "Flow"
+            color = NSUIColor.red
+        }
 
-        // Update the flow chart
-        let flowDataSet = LineChartDataSet(entries: flowData, label: "Flow")
-        flowDataSet.colors = [NSUIColor.red]
-        flowDataSet.drawCirclesEnabled = false // Disable dots
-        flowDataSet.mode = .cubicBezier // Enable cubic bezier curve
-        flowChart.data = LineChartData(dataSet: flowDataSet)
+        let dataSet = LineChartDataSet(entries: data, label: label)
+        dataSet.colors = [color]
+        dataSet.drawCirclesEnabled = false // Disable dots
+        dataSet.mode = .cubicBezier // Enable cubic bezier curve
+        chart.data = LineChartData(dataSet: dataSet)
     }
-
-   
-}
