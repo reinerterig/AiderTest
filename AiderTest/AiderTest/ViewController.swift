@@ -41,18 +41,7 @@ import AcaiaSDK
         view.addSubview(menuTableView)
     }
 
-//    func addLongTapGesture() {
-//        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap(_:)))
-//        longTapGesture.minimumPressDuration = 0.3
-//        view.addGestureRecognizer(longTapGesture)
-//    }
 
-//    @objc func handleLongTap(_ gesture: UILongPressGestureRecognizer) {
-//        if gesture.state == .began {
-//            let location = gesture.location(in: view)
-//            showMenuTableView(at: location)
-//        }
-//    }
 
     func showMenuTableView(at location: CGPoint) {
         menuTableView.frame = CGRect(x: location.x, y: location.y, width: 200, height: CGFloat(menuOptions.count * 44))
@@ -67,13 +56,6 @@ import AcaiaSDK
         weightLabel.text = "weight: "
         weightLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(weightLabel)
-
-//        // Create and setup the chart button
-//        chartButton = UIButton(type: .system)
-//        chartButton.setTitle("Chart", for: .normal)
-//        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
-//        chartButton.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(chartButton)
 
         // Create and setup the flow label
         flowLabel = UILabel()
@@ -116,7 +98,6 @@ import AcaiaSDK
             connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-//            chartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
         
@@ -141,11 +122,7 @@ import AcaiaSDK
         navigationController?.pushViewController(chartViewController, animated: true)
     }
     
-//    @objc func chartButtonTapped() {
-//        let chartViewController = ChartViewController()
-//        navigationController?.pushViewController(chartViewController, animated: true)
-//    }
-    
+
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
         weightLabel.text = "weight: \(weight)"
@@ -195,13 +172,6 @@ import AcaiaSDK
         }
         tableView.isHidden = true
     }
-
-//    func toggleChartDisplay() {
-//        isShowingWeightChart = !isShowingWeightChart
-//        if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController {
-//            chartViewController.displayChart(isShowingWeightChart ? .weight : .flow)
-//        }
-//    }
 }
 
 
