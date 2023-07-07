@@ -33,23 +33,22 @@ class ScaleTableViewController: UITableViewController {
     
     
     func startScanning() {
-        AcaiaManager.shared().startScan(10)
-        NotificationCenter.default.addObserver(self, selector: #selector(scaleListChanged), name: NSNotification.Name.AcaiaScaleListChangedNotification, object: nil)
+    func startScanning() {
+        // AcaiaManager.shared().startScan(10)
+        // NotificationCenter.default.addObserver(self, selector: #selector(scaleListChanged), name: NSNotification.Name.AcaiaScaleListChangedNotification, object: nil)
     }
-    
     
     @objc func scaleListChanged() {
-        scales = AcaiaManager.shared().scaleList as? [AcaiaScale] ?? []
-        tableView.reloadData()
+        // scales = AcaiaManager.shared().scaleList as? [AcaiaScale] ?? []
+        // tableView.reloadData()
     }
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scale = scales[indexPath.row]
-        AcaiaManager.shared().connectScale(scale)
+        // AcaiaManager.shared().connectScale(scale)
     }
-}
-
+    
     @objc func scaleDidConnect() {
         // Handle scale connection
+    }
     }
