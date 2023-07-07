@@ -47,6 +47,22 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         tableView.dataSource = self
         view.addSubview(tableView)
     }
+
+    // MARK: - UITableViewDataSource
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // Return the number of rows in the section
+        return 1 // Replace with your actual data
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+
+        // Configure the cell...
+        cell.textLabel?.text = "Row \(indexPath.row)" // Replace with your actual data
+
+        return cell
+    }
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
             self.toggleChartDisplay()
