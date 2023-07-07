@@ -51,12 +51,11 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
 
     // Implement UIContextMenuInteractionDelegate methods
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
-            let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
-                self.toggleChartDisplay()
-            }
-            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [toggleAction])
+        let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
+            self.toggleChartDisplay()
         }
+        let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [toggleAction])
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in return menu })
     }
 
 
