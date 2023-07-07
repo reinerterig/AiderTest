@@ -26,19 +26,26 @@ class ChartViewController: UIViewController {
         flowChart.isHidden = !flowChart.isHidden
     }
 
-    // Add long press gesture recognizer to the view
+    // Add long press gesture recognizer to the view with minimum press duration of 0.3 seconds
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
 
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressRecognizer.minimumPressDuration = 0.3
         view.addGestureRecognizer(longPressRecognizer)
     }
 
     // Handle long press
     @objc func handleLongPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            toggleChartDisplay()
+            // Show a menu where the gesture was performed
+            let location = gesture.location(in: view)
+            let menu = UIMenuController.shared
+            menu.setTargetRect(CGRect(x: location.x, y: location.y, width: 0, height: 0), in: view)
+            let toggleMenuItem = UIMenuItem(title: "Toggle", action: #selector(toggleChartDisplay))
+            menu.menuItems = [toggleMenuItem]
+            menu.setMenuVisible(true, animated: true)
         }
     }
 
