@@ -25,6 +25,8 @@ import AcaiaSDK
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
     }
 
+    var chartButton: UIButton!
+    
     func setupUI() {
         // Create and setup the weight label
         weightLabel = UILabel()
@@ -38,12 +40,19 @@ import AcaiaSDK
         flowLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flowLabel)
 
-        // Create and setup the button
+        // Create and setup the connect button
         connectButton = UIButton(type: .system)
         connectButton.setTitle("Connect", for: .normal)
         connectButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
         connectButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(connectButton)
+
+        // Create and setup the chart button
+        chartButton = UIButton(type: .system)
+        chartButton.setTitle("Chart", for: .normal)
+        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
+        chartButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(chartButton)
 
         // Setup constraints
         NSLayoutConstraint.activate([
@@ -52,14 +61,20 @@ import AcaiaSDK
             flowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             flowLabel.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 20),
             connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            chartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
-
     @objc func connectButtonTapped() {
         let scaleTableViewController = ScaleTableViewController()
         scaleTableViewController.delegate = self
         navigationController?.pushViewController(scaleTableViewController, animated: true)
+    }
+    
+    @objc func chartButtonTapped() {
+        let chartViewController = ChartViewController()
+        navigationController?.pushViewController(chartViewController, animated: true)
     }
     
     @objc func onWeightUpdate(_ notification: NSNotification) {
