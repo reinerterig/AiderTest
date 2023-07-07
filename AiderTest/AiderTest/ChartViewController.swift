@@ -66,6 +66,15 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
 
         return cell
     }
+
+    // MARK: - UITableViewDelegate
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if menuOptions[indexPath.row] == "Toggle" {
+            toggleChartDisplay()
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
             self.toggleChartDisplay()
