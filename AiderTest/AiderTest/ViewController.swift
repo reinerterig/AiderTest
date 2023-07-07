@@ -104,6 +104,11 @@ import AcaiaSDK
             }
             let averageFlowRate = flowRates.reduce(0, +) / Float(flowRates.count)
             flowLabel.text = "flow: " + String(format: "%.2f g/s", averageFlowRate)
+
+            // If logging is enabled, update the chart data
+            if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController, chartViewController.isLogging {
+                chartViewController.logData(time: timeDifference, weight: weight, flow: flowRate)
+            }
         }
         
         previousWeight = weight

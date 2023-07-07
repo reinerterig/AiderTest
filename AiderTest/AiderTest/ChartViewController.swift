@@ -48,32 +48,20 @@ class ChartViewController: UIViewController {
         }
     }
 
-    var timer: Timer?
-
     func startLogging() {
         // Reset the chart data
         weightData = []
         flowData = []
-
-        // Start a timer that fires every 0.1 seconds
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(logData), userInfo: nil, repeats: true)
     }
 
     func stopLogging() {
-        // Invalidate the timer to stop logging data
-        timer?.invalidate()
-        timer = nil
+        // No changes needed here
     }
 
-    @objc func logData() {
-        // Get the current time, weight, and flow
-        let time = Date().timeIntervalSince(startLoggingTime)
-        let weight = getWeight() // You need to implement this method to get the current weight
-        let flow = getFlow() // You need to implement this method to get the current flow
-
+    func logData(time: TimeInterval, weight: Float, flow: Float) {
         // Append the new data to the chart data
-        weightData.append(ChartDataEntry(x: time, y: weight))
-        flowData.append(ChartDataEntry(x: time, y: flow))
+        weightData.append(ChartDataEntry(x: time, y: Double(weight)))
+        flowData.append(ChartDataEntry(x: time, y: Double(flow)))
 
         // Update the charts
         updateCharts()
