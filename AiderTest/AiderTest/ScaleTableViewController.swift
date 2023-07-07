@@ -11,11 +11,7 @@ class ScaleTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         startScanning()
     }
-    
-    func startScanning() {
-        AcaiaManager.shared().startScan(10)
-        NotificationCenter.default.addObserver(self, selector: #selector(scaleListChanged), name: NSNotification.Name.AcaiaScaleListChangedNotification, object: nil)
-    }
+
     
     // MARK: - Table view data source
     
