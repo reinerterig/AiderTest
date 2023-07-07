@@ -31,6 +31,17 @@ class ChartViewController: UIViewController {
         flowChart = LineChartView()
         flowChart.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flowChart)
+    }
+
+        // Create and setup the weight chart
+        weightChart = LineChartView()
+        weightChart.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(weightChart)
+
+        // Create and setup the flow chart
+        flowChart = LineChartView()
+        flowChart.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(flowChart)
 
         // Setup constraints
         // ...
@@ -40,11 +51,22 @@ class ChartViewController: UIViewController {
         if isLogging {
             isLogging = false
             startButton.setTitle("Start", for: .normal)
+            stopLogging()
         } else {
             isLogging = true
             startButton.setTitle("Stop", for: .normal)
             startLogging()
         }
+    }
+
+    func startLogging() {
+        // Start logging the weight and flow data and update the charts
+        // This is a placeholder. You need to implement the actual logging and chart updating logic.
+    }
+
+    func stopLogging() {
+        // Stop logging the weight and flow data
+        // This is a placeholder. You need to implement the actual logic to stop logging.
     }
 
     func startLogging() {

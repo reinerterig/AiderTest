@@ -34,6 +34,13 @@ import AcaiaSDK
         weightLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(weightLabel)
 
+        // Create and setup the chart button
+        chartButton = UIButton(type: .system)
+        chartButton.setTitle("Chart", for: .normal)
+        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
+        chartButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(chartButton)
+
         // Create and setup the flow label
         flowLabel = UILabel()
         flowLabel.text = "flow: "
@@ -70,6 +77,11 @@ import AcaiaSDK
         let scaleTableViewController = ScaleTableViewController()
         scaleTableViewController.delegate = self
         navigationController?.pushViewController(scaleTableViewController, animated: true)
+    }
+
+    @objc func chartButtonTapped() {
+        let chartViewController = ChartViewController()
+        navigationController?.pushViewController(chartViewController, animated: true)
     }
     
     @objc func chartButtonTapped() {
