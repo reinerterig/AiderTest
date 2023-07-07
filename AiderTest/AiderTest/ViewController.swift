@@ -26,11 +26,17 @@ import AcaiaSDK
     }
 
     func setupUI() {
-        // Create and setup the label
+        // Create and setup the weight label
         weightLabel = UILabel()
-        weightLabel.text = "Hello World"
+        weightLabel.text = "weight: "
         weightLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(weightLabel)
+
+        // Create and setup the flow label
+        flowLabel = UILabel()
+        flowLabel.text = "flow: "
+        flowLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(flowLabel)
 
         // Create and setup the button
         connectButton = UIButton(type: .system)
@@ -43,6 +49,8 @@ import AcaiaSDK
         NSLayoutConstraint.activate([
             weightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             weightLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            flowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            flowLabel.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 20),
             connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
@@ -56,7 +64,7 @@ import AcaiaSDK
     
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
-        weightLabel.text = "\(weight)"
+        weightLabel.text = "weight: \(weight)"
         
         let currentTime = Date()
         let timeDifference = currentTime.timeIntervalSince(previousTime)
@@ -68,7 +76,7 @@ import AcaiaSDK
                 flowRates.removeFirst()
             }
             let averageFlowRate = flowRates.reduce(0, +) / Float(flowRates.count)
-            flowLabel.text = String(format: "%.2f g/s", averageFlowRate)
+            flowLabel.text = "flow: " + String(format: "%.2f g/s", averageFlowRate)
         }
         
         previousWeight = weight
