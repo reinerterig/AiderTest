@@ -11,11 +11,14 @@ import AcaiaSDK
     class ViewController: UIViewController, ScaleTableViewControllerDelegate {
         var weightLabel: UILabel!
         var connectButton: UIButton!
+        var flowLabel: UILabel!
+        var previousWeight: Float = 0
+        var previousTime: Date = Date()
+        var flowRates: [Float] = []
         
         deinit {
             NotificationCenter.default.removeObserver(self)
         }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -54,6 +57,22 @@ import AcaiaSDK
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
         weightLabel.text = "\(weight)"
+        
+        let currentTime = Date()
+        let timeDifference = currentTime.timeIntervalSince(previousTime)
+        if timeDifference > 0 {
+            let weightDifference = weight - previousWeight
+            let flowRate = weightDifference / Float(timeDifference)
+            flowRates.append(flowRate)
+            if flowRates.count > 10 {
+                flowRates.removeFirst()
+            }
+            let averageFlowRate = flowRates.reduce(0, +) / Float(flowRates.count)
+            flowLabel.text = String(format: "%.2f g/s", averageFlowRate)
+        }
+        
+        previousWeight = weight
+        previousTime = currentTime
     }
     
     func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
