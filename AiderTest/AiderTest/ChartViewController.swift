@@ -128,24 +128,25 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
             }
         }
         
-        func updateChart() {
-            let data: [ChartDataEntry]
-            let label: String
-            let color: NSUIColor
-            if isDisplayingWeightData {
-                data = weightData
-                label = "Weight"
-                color = NSUIColor.blue
-            } else {
-                data = flowData
-                label = "Flow"
-                color = NSUIColor.red
-            }
-            
-            let dataSet = LineChartDataSet(entries: data, label: label)
-            dataSet.colors = [color]
-            dataSet.drawCirclesEnabled = false // Disable dots
-            dataSet.mode = .cubicBezier // Enable cubic bezier curve
-            chart.data = LineChartData(dataSet: dataSet)
+    func updateChart() {
+        let data: [ChartDataEntry]
+        let label: String
+        let color: NSUIColor
+        if isDisplayingWeightData {
+            data = weightData
+            label = "Weight"
+            color = NSUIColor.blue
+        } else {
+            data = flowData
+            label = "Flow"
+            color = NSUIColor.red
         }
+        
+        let dataSet = LineChartDataSet(entries: data, label: label)
+        dataSet.colors = [color]
+        dataSet.drawCirclesEnabled = false // Disable dots
+        dataSet.mode = .cubicBezier // Enable cubic bezier curve
+        chart.data = LineChartData(dataSet: dataSet)
+        chart.notifyDataSetChanged() // Add this line
+    }
     }
