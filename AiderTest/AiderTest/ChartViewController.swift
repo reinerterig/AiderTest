@@ -49,6 +49,17 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
+
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapRecognizer)
+    }
+
+    @objc func handleTap(gesture: UITapGestureRecognizer) {
+        for subview in view.subviews {
+            if subview is UITableView {
+                subview.removeFromSuperview()
+            }
+        }
     }
 
     // MARK: - UITableViewDataSource
@@ -74,6 +85,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             toggleChartDisplay()
         }
         tableView.deselectRow(at: indexPath, animated: true)
+        tableView.removeFromSuperview()
     }
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
