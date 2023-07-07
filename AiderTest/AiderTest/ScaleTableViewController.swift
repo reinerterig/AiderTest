@@ -31,10 +31,17 @@ class ScaleTableViewController: UITableViewController {
         let scale = scales[indexPath.row]
         cell.textLabel?.text = scale.name
         return cell
+    func startScanning() {
+        AcaiaManager.shared().startScan(10)
+        NotificationCenter.default.addObserver(self, selector: #selector(scaleListChanged), name: NSNotification.Name.AcaiaScaleListChangedNotification, object: nil)
+    }
+
+    @objc func scaleListChanged() {
+        scales = AcaiaManager.shared().scaleList as? [AcaiaScale] ?? []
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scale = scales[indexPath.row]
-        // Connect to the selected scale
+        scale.connect()
     }
-}
