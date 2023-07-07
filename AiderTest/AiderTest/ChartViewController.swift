@@ -91,7 +91,5 @@ class ChartViewController: UIViewController {
         flowChart.data = LineChartData(dataSet: flowDataSet)
     }
 
-    func startLogging() {
-        // Start logging the weight and flow data and update the charts
-    }
+   
 }
