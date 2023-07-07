@@ -37,9 +37,15 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
         if gesture.state == .began {
             // Show a menu where the gesture was performed
             let location = gesture.location(in: view)
-            let interaction = UIContextMenuInteraction(delegate: self)
-            view.addInteraction(interaction)
+            createTableView(at: location)
         }
+    }
+    
+    func createTableView(at location: CGPoint) {
+        let tableView = UITableView(frame: CGRect(x: location.x, y: location.y, width: 200, height: 300))
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
     }
     func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
         let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
