@@ -21,10 +21,10 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
     }
 
     // Add 'toggleChartDisplay' method and make it visible to Objective-C
-    @objc func toggleChartDisplay() {
-        weightChart.isHidden = !weightChart.isHidden
-        flowChart.isHidden = !flowChart.isHidden
-    }
+//    @objc func toggleChartDisplay() {
+//        weightChart.isHidden = !weightChart.isHidden
+//        flowChart.isHidden = !flowChart.isHidden
+//    }
 
     // Add long press gesture recognizer to the view with minimum press duration of 0.3 seconds
     override func viewDidLoad() {
@@ -100,59 +100,62 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
             isLogging = true
             startButton.setTitle("Stop", for: .normal)
             startLogging()
-    var chart: LineChartView!
-    var isLogging: Bool = false
-    var startTime: Date?
-    var weightData: [ChartDataEntry] = []
-    var flowData: [ChartDataEntry] = []
-    var isDisplayingWeightData: Bool = true
-
-    @objc func toggleChartDisplay() {
-        isDisplayingWeightData = !isDisplayingWeightData
-        updateChart()
-    }
-
-    func startLogging() {
-        // Reset the chart data
-        weightData = []
-        flowData = []
-        // Store the start time
-        startTime = Date()
-    }
-
-    func stopLogging() {
-        // Reset the start time
-        startTime = nil
-    }
-
-    func logData(time: TimeInterval, weight: Float, flow: Float) {
-        // Append the new data to the chart data
-        weightData.append(ChartDataEntry(x: time, y: Double(weight)))
-        flowData.append(ChartDataEntry(x: time, y: Double(flow)))
-
-        // Update the chart
-        DispatchQueue.main.async {
-            self.updateChart()
+            var chart: LineChartView!
+            var isLogging: Bool = false
+            var startTime: Date?
+            var weightData: [ChartDataEntry] = []
+            var flowData: [ChartDataEntry] = []
+            var isDisplayingWeightData: Bool = true
         }
     }
-
-    func updateChart() {
-        let data: [ChartDataEntry]
-        let label: String
-        let color: NSUIColor
-        if isDisplayingWeightData {
-            data = weightData
-            label = "Weight"
-            color = NSUIColor.blue
-        } else {
-            data = flowData
-            label = "Flow"
-            color = NSUIColor.red
+        
+        @objc func toggleChartDisplay() {
+            isDisplayingWeightData = !isDisplayingWeightData
+            updateChart()
         }
-
-        let dataSet = LineChartDataSet(entries: data, label: label)
-        dataSet.colors = [color]
-        dataSet.drawCirclesEnabled = false // Disable dots
-        dataSet.mode = .cubicBezier // Enable cubic bezier curve
-        chart.data = LineChartData(dataSet: dataSet)
+        
+        func startLogging() {
+            // Reset the chart data
+            weightData = []
+            flowData = []
+            // Store the start time
+            startTime = Date()
+        }
+        
+        func stopLogging() {
+            // Reset the start time
+            startTime = nil
+        }
+        
+        func logData(time: TimeInterval, weight: Float, flow: Float) {
+            // Append the new data to the chart data
+            weightData.append(ChartDataEntry(x: time, y: Double(weight)))
+            flowData.append(ChartDataEntry(x: time, y: Double(flow)))
+            
+            // Update the chart
+            DispatchQueue.main.async {
+                self.updateChart()
+            }
+        }
+        
+        func updateChart() {
+            let data: [ChartDataEntry]
+            let label: String
+            let color: NSUIColor
+            if isDisplayingWeightData {
+                data = weightData
+                label = "Weight"
+                color = NSUIColor.blue
+            } else {
+                data = flowData
+                label = "Flow"
+                color = NSUIColor.red
+            }
+            
+            let dataSet = LineChartDataSet(entries: data, label: label)
+            dataSet.colors = [color]
+            dataSet.drawCirclesEnabled = false // Disable dots
+            dataSet.mode = .cubicBezier // Enable cubic bezier curve
+            chart.data = LineChartData(dataSet: dataSet)
+        }
     }
