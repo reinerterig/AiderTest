@@ -43,5 +43,5 @@ class ScaleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let scale = scales[indexPath.row]
-        scale.connect()
+        AcaiaManager.shared().connectScale(scale)
     }
