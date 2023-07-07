@@ -41,11 +41,19 @@ class ChartViewController: UIViewController {
         if gesture.state == .began {
             // Show a menu where the gesture was performed
             let location = gesture.location(in: view)
-            let menu = UIMenuController.shared
-            menu.setTargetRect(CGRect(x: location.x, y: location.y, width: 0, height: 0), in: view)
-            let toggleMenuItem = UIMenuItem(title: "Toggle", action: #selector(toggleChartDisplay))
-            menu.menuItems = [toggleMenuItem]
-            menu.setMenuVisible(true, animated: true)
+            let interaction = UIContextMenuInteraction(delegate: self)
+            view.addInteraction(interaction)
+            interaction.performPreviewActionCommit()
+        }
+    }
+
+    // Implement UIContextMenuInteractionDelegate methods
+    func contextMenuInteraction(_ interaction: UIContextMenuInteraction, configurationForMenuAtLocation location: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+            let toggleAction = UIAction(title: "Toggle", image: nil, identifier: nil, discoverabilityTitle: nil, attributes: [], state: .off) { _ in
+                self.toggleChartDisplay()
+            }
+            return UIMenu(title: "", image: nil, identifier: nil, options: [], children: [toggleAction])
         }
     }
 
