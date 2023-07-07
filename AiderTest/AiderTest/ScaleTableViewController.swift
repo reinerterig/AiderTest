@@ -6,6 +6,8 @@ class ScaleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ScaleCell")
+        
         _setRefreshControl()
         _addAcaiaEventsObserver()
     }
