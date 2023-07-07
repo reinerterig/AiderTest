@@ -31,6 +31,12 @@ class ChartViewController: UIViewController {
         flowChart = LineChartView()
         flowChart.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flowChart)
+
+        // Setup constraints
+        NSLayoutConstraint.activate([
+            startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20)
+        ])
     }
 
        
