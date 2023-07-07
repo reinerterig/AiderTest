@@ -59,14 +59,47 @@ class ChartViewController: UIViewController {
         }
     }
 
+    var timer: Timer?
+
     func startLogging() {
-        // Start logging the weight and flow data and update the charts
-        // This is a placeholder. You need to implement the actual logging and chart updating logic.
+        // Reset the chart data
+        weightData = []
+        flowData = []
+
+        // Start a timer that fires every 0.1 seconds
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(logData), userInfo: nil, repeats: true)
     }
 
     func stopLogging() {
-        // Stop logging the weight and flow data
-        // This is a placeholder. You need to implement the actual logic to stop logging.
+        // Invalidate the timer to stop logging data
+        timer?.invalidate()
+        timer = nil
+    }
+
+    @objc func logData() {
+        // Get the current time, weight, and flow
+        let time = Date().timeIntervalSince(startLoggingTime)
+        let weight = getWeight() // You need to implement this method to get the current weight
+        let flow = getFlow() // You need to implement this method to get the current flow
+
+        // Append the new data to the chart data
+        weightData.append(ChartDataEntry(x: time, y: weight))
+        flowData.append(ChartDataEntry(x: time, y: flow))
+
+        // Update the charts
+        updateCharts()
+    }
+
+    func updateCharts() {
+        // Update the weight chart
+        let weightDataSet = LineChartDataSet(entries: weightData, label: "Weight")
+        weightDataSet.colors = [NSUIColor.blue]
+        weightChart.data = LineChartData(dataSet: weightDataSet)
+
+        // Update the flow chart
+        let flowDataSet = LineChartDataSet(entries: flowData, label: "Flow")
+        flowDataSet.colors = [NSUIColor.red]
+        flowChart.data = LineChartData(dataSet: flowDataSet)
     }
 
     func startLogging() {
