@@ -111,6 +111,11 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
 
 
     func setupUI() {
+        // Create and setup the chart
+        chart = LineChartView()
+        chart.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(chart)
+
         // Create and setup the start button
         startButton = UIButton(type: .system)
         startButton.setTitle("Start", for: .normal)
@@ -118,25 +123,17 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         startButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(startButton)
 
-    // Create and setup the chart
-    chart = LineChartView()
-    chart.translatesAutoresizingMaskIntoConstraints = false
-    view.addSubview(chart)
-
         // Setup constraints
         NSLayoutConstraint.activate([
+            chart.topAnchor.constraint(equalTo: view.topAnchor),
+            chart.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            chart.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            chart.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
             startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            ])
-    // Setup constraints
-    NSLayoutConstraint.activate([
-        chart.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-        chart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-        chart.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-        chart.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -20)
-    ])
+        ])
     }
-
        
     
 
