@@ -84,10 +84,10 @@ import AcaiaSDK
         navigationController?.pushViewController(chartViewController, animated: true)
     }
     
-    @objc func chartButtonTapped() {
-        let chartViewController = ChartViewController()
-        navigationController?.pushViewController(chartViewController, animated: true)
-    }
+//    @objc func chartButtonTapped() {
+//        let chartViewController = ChartViewController()
+//        navigationController?.pushViewController(chartViewController, animated: true)
+//    }
     
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }

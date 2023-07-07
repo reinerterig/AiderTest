@@ -1,5 +1,5 @@
 import UIKit
-import Charts // or the chart library you're using
+import DGCharts // or the chart library you're using
 
 class ChartViewController: UIViewController {
     var startButton: UIButton!
@@ -33,19 +33,8 @@ class ChartViewController: UIViewController {
         view.addSubview(flowChart)
     }
 
-        // Create and setup the weight chart
-        weightChart = LineChartView()
-        weightChart.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(weightChart)
-
-        // Create and setup the flow chart
-        flowChart = LineChartView()
-        flowChart.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(flowChart)
-
-        // Setup constraints
-        // ...
-    }
+       
+    
 
     @objc func startButtonTapped() {
         if isLogging {
