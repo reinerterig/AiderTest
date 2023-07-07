@@ -20,10 +20,42 @@ import AcaiaSDK
         deinit {
             NotificationCenter.default.removeObserver(self)
         }
+    var menuTableView: UITableView!
+    var menuOptions: [String] = ["Toggle"]
+    var isShowingWeightChart = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupMenuTableView()
+        addLongTapGesture()
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+    }
+
+    func setupMenuTableView() {
+        menuTableView = UITableView()
+        menuTableView.delegate = self
+        menuTableView.dataSource = self
+        menuTableView.isHidden = true
+        menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuOptionCell")
+        view.addSubview(menuTableView)
+    }
+
+    func addLongTapGesture() {
+        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap(_:)))
+        view.addGestureRecognizer(longTapGesture)
+    }
+
+    @objc func handleLongTap(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let location = gesture.location(in: view)
+            showMenuTableView(at: location)
+        }
+    }
+
+    func showMenuTableView(at location: CGPoint) {
+        menuTableView.frame = CGRect(x: location.x, y: location.y, width: 200, height: CGFloat(menuOptions.count * 44))
+        menuTableView.isHidden = false
     }
 
     var chartButton: UIButton!
@@ -142,6 +174,30 @@ import AcaiaSDK
     
     func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
         // Implement this method as required by the protocol
+    }
+
+    // MARK: - UITableViewDelegate and UITableViewDataSource methods
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return menuOptions.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOptionCell", for: indexPath)
+        cell.textLabel?.text = menuOptions[indexPath.row]
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if menuOptions[indexPath.row] == "Toggle" {
+            toggleChartDisplay()
+        }
+        tableView.isHidden = true
+    }
+
+    func toggleChartDisplay() {
+        isShowingWeightChart = !isShowingWeightChart
+        // TODO: Update the chart view to display the correct chart based on the isShowingWeightChart variable
     }
 }
 
