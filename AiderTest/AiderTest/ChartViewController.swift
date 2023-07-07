@@ -9,15 +9,37 @@ class ChartViewController: UIViewController {
     var startTime: Date?
     var weightData: [ChartDataEntry] = []
     var flowData: [ChartDataEntry] = []
-    var weight: ChartType = .weight // Modify 'weight' member to be of type 'ChartType'
+    // Remove 'weight' member
 
-    // Modify 'displayChart' method to take 'weightData' or 'flowData' as an argument
+    // Modify 'displayChart' method to take 'weightData' or 'flowData' as an argument and implement chart displaying logic
     func displayChart(_ data: [ChartDataEntry], for chart: LineChartView, with label: String, color: NSUIColor) {
         let dataSet = LineChartDataSet(entries: data, label: label)
         dataSet.colors = [color]
         dataSet.drawCirclesEnabled = false // Disable dots
         dataSet.mode = .cubicBezier // Enable cubic bezier curve
         chart.data = LineChartData(dataSet: dataSet)
+    }
+
+    // Add 'toggleChartDisplay' method
+    func toggleChartDisplay() {
+        weightChart.isHidden = !weightChart.isHidden
+        flowChart.isHidden = !flowChart.isHidden
+    }
+
+    // Add long press gesture recognizer to the view
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+
+        let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        view.addGestureRecognizer(longPressRecognizer)
+    }
+
+    // Handle long press
+    @objc func handleLongPress(gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            toggleChartDisplay()
+        }
     }
 
     override func viewDidLoad() {
