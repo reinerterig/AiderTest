@@ -13,6 +13,8 @@
 		48BECB9F2A57CE0600664BFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BECB9D2A57CE0600664BFB /* Main.storyboard */; };
 		48BECBA12A57CE0700664BFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48BECBA02A57CE0700664BFB /* Assets.xcassets */; };
 		48BECBA42A57CE0700664BFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48BECBA22A57CE0700664BFB /* LaunchScreen.storyboard */; };
+		48BECBAD2A57CE8100664BFB /* AcaiaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */; };
+		48BECBB22A57CE9C00664BFB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBB12A57CE9C00664BFB /* DGCharts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,7 @@
 		48BECBA02A57CE0700664BFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		48BECBA32A57CE0700664BFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48BECBA52A57CE0700664BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AcaiaSDK.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BECBB22A57CE9C00664BFB /* DGCharts in Frameworks */,
+				48BECBAD2A57CE8100664BFB /* AcaiaSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,7 @@
 			children = (
 				48BECB962A57CE0600664BFB /* AiderTest */,
 				48BECB952A57CE0600664BFB /* Products */,
+				48BECBAB2A57CE8100664BFB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +73,14 @@
 			path = AiderTest;
 			sourceTree = "<group>";
 		};
+		48BECBAB2A57CE8100664BFB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -83,6 +97,9 @@
 			dependencies = (
 			);
 			name = AiderTest;
+			packageProductDependencies = (
+				48BECBB12A57CE9C00664BFB /* DGCharts */,
+			);
 			productName = AiderTest;
 			productReference = 48BECB942A57CE0600664BFB /* AiderTest.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,9 @@
 				Base,
 			);
 			mainGroup = 48BECB8B2A57CE0600664BFB;
+			packageReferences = (
+				48BECBB02A57CE9C00664BFB /* XCRemoteSwiftPackageReference "Charts" */,
+			);
 			productRefGroup = 48BECB952A57CE0600664BFB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -363,6 +383,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		48BECBB02A57CE9C00664BFB /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		48BECBB12A57CE9C00664BFB /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB02A57CE9C00664BFB /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 48BECB8C2A57CE0600664BFB /* Project object */;
 }
