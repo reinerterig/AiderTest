@@ -43,6 +43,8 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
     
     var menuOptions = ["Toggle"] // Add more options as needed
 
+    var tapRecognizer: UITapGestureRecognizer?
+
     func createTableView(at location: CGPoint) {
         let tableView = UITableView(frame: CGRect(x: location.x, y: location.y, width: 200, height: 300))
         tableView.delegate = self
@@ -50,8 +52,8 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
 
-        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapRecognizer)
+        tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        chart.addGestureRecognizer(tapRecognizer!)
     }
 
     @objc func handleTap(gesture: UITapGestureRecognizer) {
@@ -59,6 +61,9 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             if subview is UITableView {
                 subview.removeFromSuperview()
             }
+        }
+        if let recognizer = tapRecognizer {
+            chart.removeGestureRecognizer(recognizer)
         }
     }
 
