@@ -11,22 +11,13 @@ class ChartViewController: UIViewController {
     var flowData: [ChartDataEntry] = []
     var weight: ChartType = .weight // Modify 'weight' member to be of type 'ChartType'
 
-    // Modify 'displayChart' method to take an argument and implement chart displaying logic
-    func displayChart(_ type: ChartType) {
-        switch type {
-        case .weight:
-            let weightDataSet = LineChartDataSet(entries: weightData, label: "Weight")
-            weightDataSet.colors = [NSUIColor.blue]
-            weightDataSet.drawCirclesEnabled = false // Disable dots
-            weightDataSet.mode = .cubicBezier // Enable cubic bezier curve
-            weightChart.data = LineChartData(dataSet: weightDataSet)
-        case .flow:
-            let flowDataSet = LineChartDataSet(entries: flowData, label: "Flow")
-            flowDataSet.colors = [NSUIColor.red]
-            flowDataSet.drawCirclesEnabled = false // Disable dots
-            flowDataSet.mode = .cubicBezier // Enable cubic bezier curve
-            flowChart.data = LineChartData(dataSet: flowDataSet)
-        }
+    // Modify 'displayChart' method to take 'weightData' or 'flowData' as an argument
+    func displayChart(_ data: [ChartDataEntry], for chart: LineChartView, with label: String, color: NSUIColor) {
+        let dataSet = LineChartDataSet(entries: data, label: label)
+        dataSet.colors = [color]
+        dataSet.drawCirclesEnabled = false // Disable dots
+        dataSet.mode = .cubicBezier // Enable cubic bezier curve
+        chart.data = LineChartData(dataSet: dataSet)
     }
 
     override func viewDidLoad() {
