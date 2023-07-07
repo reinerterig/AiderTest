@@ -70,7 +70,9 @@ class ChartViewController: UIViewController {
         flowData.append(ChartDataEntry(x: time, y: Double(flow)))
 
         // Update the charts
-        updateCharts()
+        DispatchQueue.main.async {
+            self.updateCharts()
+        }
     }
 
     func updateCharts() {
