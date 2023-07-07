@@ -198,7 +198,9 @@ import AcaiaSDK
 
     func toggleChartDisplay() {
         isShowingWeightChart = !isShowingWeightChart
-        // TODO: Update the chart view to display the correct chart based on the isShowingWeightChart variable
+        if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController {
+            chartViewController.displayChart(isShowingWeightChart ? .weight : .flow)
+        }
     }
 }
 
