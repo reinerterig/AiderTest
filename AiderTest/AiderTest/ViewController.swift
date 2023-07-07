@@ -8,7 +8,7 @@
 import UIKit
 import AcaiaSDK
 
-    class ViewController: UIViewController, ScaleTableViewControllerDelegate {
+    class ViewController: UIViewController, ScaleTableViewControllerDelegate, UITableViewDelegate, UITableViewDataSource {
         var weightLabel: UILabel!
         var connectButton: UIButton!
         var disconnectButton: UIButton!
