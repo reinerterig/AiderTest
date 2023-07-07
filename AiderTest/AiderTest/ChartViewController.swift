@@ -35,7 +35,13 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
     // Handle long press
     @objc func handleLongPress(gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            // Show a menu where the gesture was performed
+            // Dismiss any existing menu
+            for subview in view.subviews {
+                if subview is UITableView {
+                    subview.removeFromSuperview()
+                }
+            }
+            // Show a new menu where the gesture was performed
             let location = gesture.location(in: view)
             createTableView(at: location)
         }
