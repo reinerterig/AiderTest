@@ -1,7 +1,7 @@
 import UIKit
 import DGCharts // or the chart library you're using
 
-class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
+class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UITableViewDelegate,UITableViewDataSource {
     var startButton: UIButton!
     var chart: LineChartView!
     var isLogging: Bool = false
