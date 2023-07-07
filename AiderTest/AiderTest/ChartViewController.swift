@@ -68,6 +68,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
         NSLayoutConstraint.activate([
             startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            ])
     // Setup constraints
     NSLayoutConstraint.activate([
         chart.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
