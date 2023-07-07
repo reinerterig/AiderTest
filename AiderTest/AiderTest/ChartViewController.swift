@@ -3,12 +3,12 @@ import DGCharts // or the chart library you're using
 
 class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
     var startButton: UIButton!
-    var weightChart: LineChartView!
-    var flowChart: LineChartView!
+    var chart: LineChartView!
     var isLogging: Bool = false
     var startTime: Date?
     var weightData: [ChartDataEntry] = []
     var flowData: [ChartDataEntry] = []
+    var isDisplayingWeightData: Bool = true
     // Remove 'weight' member
 
     // Modify 'displayChart' method to take 'weightData' or 'flowData' as an argument and implement chart displaying logic
@@ -21,11 +21,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
     }
 
     // Add 'toggleChartDisplay' method and make it visible to Objective-C
-//    @objc func toggleChartDisplay() {
-//        weightChart.isHidden = !weightChart.isHidden
-//        flowChart.isHidden = !flowChart.isHidden
-//    }
-
+//
     // Add long press gesture recognizer to the view with minimum press duration of 0.3 seconds
     override func viewDidLoad() {
         super.viewDidLoad()
