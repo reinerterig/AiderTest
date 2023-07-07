@@ -46,7 +46,9 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
     var tapRecognizer: UITapGestureRecognizer?
 
     func createTableView(at location: CGPoint) {
-        let tableView = UITableView(frame: CGRect(x: location.x, y: location.y, width: 200, height: 300))
+        let rowHeight: CGFloat = 44 // Default row height
+        let tableViewHeight = CGFloat(menuOptions.count) * rowHeight
+        let tableView = UITableView(frame: CGRect(x: location.x, y: location.y, width: 200, height: tableViewHeight))
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
