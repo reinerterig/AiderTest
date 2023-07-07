@@ -59,29 +59,22 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
         startButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(startButton)
 
-        // Create and setup the weight chart
-        weightChart = LineChartView()
-        weightChart.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(weightChart)
-
-        // Create and setup the flow chart
-        flowChart = LineChartView()
-        flowChart.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(flowChart)
+    // Create and setup the chart
+    chart = LineChartView()
+    chart.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(chart)
 
         // Setup constraints
         NSLayoutConstraint.activate([
             startButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             startButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            weightChart.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            weightChart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            weightChart.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            weightChart.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5, constant: -20),
-            flowChart.topAnchor.constraint(equalTo: weightChart.bottomAnchor, constant: 20),
-            flowChart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            flowChart.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            flowChart.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -20)
-        ])
+    // Setup constraints
+    NSLayoutConstraint.activate([
+        chart.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+        chart.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+        chart.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+        chart.bottomAnchor.constraint(equalTo: startButton.topAnchor, constant: -20)
+    ])
     }
 
        
