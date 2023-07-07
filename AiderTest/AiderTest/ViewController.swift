@@ -28,7 +28,7 @@ import AcaiaSDK
         super.viewDidLoad()
         setupUI()
         setupMenuTableView()
-        addLongTapGesture()
+//        addLongTapGesture()
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
     }
 
@@ -41,18 +41,18 @@ import AcaiaSDK
         view.addSubview(menuTableView)
     }
 
-    func addLongTapGesture() {
-        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap(_:)))
-        longTapGesture.minimumPressDuration = 0.3
-        view.addGestureRecognizer(longTapGesture)
-    }
+//    func addLongTapGesture() {
+//        let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap(_:)))
+//        longTapGesture.minimumPressDuration = 0.3
+//        view.addGestureRecognizer(longTapGesture)
+//    }
 
-    @objc func handleLongTap(_ gesture: UILongPressGestureRecognizer) {
-        if gesture.state == .began {
-            let location = gesture.location(in: view)
-            showMenuTableView(at: location)
-        }
-    }
+//    @objc func handleLongTap(_ gesture: UILongPressGestureRecognizer) {
+//        if gesture.state == .began {
+//            let location = gesture.location(in: view)
+//            showMenuTableView(at: location)
+//        }
+//    }
 
     func showMenuTableView(at location: CGPoint) {
         menuTableView.frame = CGRect(x: location.x, y: location.y, width: 200, height: CGFloat(menuOptions.count * 44))
@@ -191,17 +191,17 @@ import AcaiaSDK
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if menuOptions[indexPath.row] == "Toggle" {
-            toggleChartDisplay()
+//            toggleChartDisplay()
         }
         tableView.isHidden = true
     }
 
-    func toggleChartDisplay() {
-        isShowingWeightChart = !isShowingWeightChart
-        if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController {
-            chartViewController.displayChart(isShowingWeightChart ? .weight : .flow)
-        }
-    }
+//    func toggleChartDisplay() {
+//        isShowingWeightChart = !isShowingWeightChart
+//        if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController {
+//            chartViewController.displayChart(isShowingWeightChart ? .weight : .flow)
+//        }
+//    }
 }
 
 
