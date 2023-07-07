@@ -47,6 +47,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         let tableView = UITableView(frame: CGRect(x: location.x, y: location.y, width: 200, height: 300))
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
     }
 
