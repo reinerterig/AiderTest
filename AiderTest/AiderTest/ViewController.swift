@@ -43,6 +43,7 @@ import AcaiaSDK
 
     func addLongTapGesture() {
         let longTapGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap(_:)))
+        longTapGesture.minimumPressDuration = 0.3
         view.addGestureRecognizer(longTapGesture)
     }
 
