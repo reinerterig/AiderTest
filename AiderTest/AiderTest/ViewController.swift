@@ -11,6 +11,7 @@ import AcaiaSDK
     class ViewController: UIViewController, ScaleTableViewControllerDelegate {
         var weightLabel: UILabel!
         var connectButton: UIButton!
+        var disconnectButton: UIButton!
         var flowLabel: UILabel!
         var previousWeight: Float = 0
         var previousTime: Date = Date()
@@ -46,7 +47,7 @@ import AcaiaSDK
         flowLabel.text = "flow: "
         flowLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flowLabel)
-    func setupUI() {
+   
         // Create and setup the connect button
         connectButton = UIButton(type: .system)
         connectButton.setTitle("Connect", for: .normal)
@@ -60,14 +61,8 @@ import AcaiaSDK
         disconnectButton.addTarget(self, action: #selector(disconnectButtonTapped), for: .touchUpInside)
         disconnectButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(disconnectButton)
-    }
-        // Create and setup the disconnect button
-        disconnectButton = UIButton(type: .system)
-        disconnectButton.setTitle("Disconnect", for: .normal)
-        disconnectButton.addTarget(self, action: #selector(disconnectButtonTapped), for: .touchUpInside)
-        disconnectButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(disconnectButton)
-    }
+    
+       
         // Create and setup the chart button
         chartButton = UIButton(type: .system)
         chartButton.setTitle("Chart", for: .normal)
@@ -87,6 +82,7 @@ import AcaiaSDK
             chartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
+        
     @objc func connectButtonTapped() {
         let scaleTableViewController = ScaleTableViewController()
         scaleTableViewController.delegate = self
@@ -95,21 +91,11 @@ import AcaiaSDK
 
     @objc func disconnectButtonTapped() {
         // Disconnect the scale
-        AcaiaManager.sharedManager().connectedScale?.disconnect()
+        AcaiaManager.shared().connectedScale?.disconnect()
 
         // If the scale is not disconnected by the user, reconnect it
-        if AcaiaManager.sharedManager().connectedScale == nil {
-            AcaiaManager.sharedManager().startScan(5)
-        }
-    }
-
-    @objc func disconnectButtonTapped() {
-        // Disconnect the scale
-        AcaiaManager.sharedManager().connectedScale?.disconnect()
-
-        // If the scale is not disconnected by the user, reconnect it
-        if AcaiaManager.sharedManager().connectedScale == nil {
-            AcaiaManager.sharedManager().startScan(5)
+        if AcaiaManager.shared().connectedScale == nil {
+            AcaiaManager.shared().startScan(5)
         }
     }
 
