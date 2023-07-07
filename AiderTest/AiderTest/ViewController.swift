@@ -42,7 +42,8 @@ class ViewController: UIViewController {
     }
 
     @objc func connectButtonTapped() {
-        // Navigate to the table view controller
+        let scaleTableViewController = ScaleTableViewController()
+        navigationController?.pushViewController(scaleTableViewController, animated: true)
     }
 }
 
