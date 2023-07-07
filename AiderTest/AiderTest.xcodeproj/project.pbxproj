@@ -16,6 +16,7 @@
 		48BECBAD2A57CE8100664BFB /* AcaiaSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */; };
 		48BECBB22A57CE9C00664BFB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBB12A57CE9C00664BFB /* DGCharts */; };
 		48BECBB42A57D50900664BFB /* ScaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BECBB32A57D50900664BFB /* ScaleTableViewController.swift */; };
+		48BECBB62A57E4D600664BFB /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BECBB52A57E4D500664BFB /* ChartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		48BECBA52A57CE0700664BFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AcaiaSDK.xcframework; sourceTree = "<group>"; };
 		48BECBB32A57D50900664BFB /* ScaleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTableViewController.swift; sourceTree = "<group>"; };
+		48BECBB52A57E4D500664BFB /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 			children = (
 				48BECBB32A57D50900664BFB /* ScaleTableViewController.swift */,
 				48BECB972A57CE0600664BFB /* AppDelegate.swift */,
+				48BECBB52A57E4D500664BFB /* ChartViewController.swift */,
 				48BECB992A57CE0600664BFB /* SceneDelegate.swift */,
 				48BECB9B2A57CE0600664BFB /* ViewController.swift */,
 				48BECB9D2A57CE0600664BFB /* Main.storyboard */,
@@ -165,6 +168,7 @@
 				48BECB9C2A57CE0600664BFB /* ViewController.swift in Sources */,
 				48BECB982A57CE0600664BFB /* AppDelegate.swift in Sources */,
 				48BECB9A2A57CE0600664BFB /* SceneDelegate.swift in Sources */,
+				48BECBB62A57E4D600664BFB /* ChartViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
