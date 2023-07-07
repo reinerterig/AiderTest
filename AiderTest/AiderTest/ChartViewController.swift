@@ -9,10 +9,10 @@ class ChartViewController: UIViewController {
     var startTime: Date?
     var weightData: [ChartDataEntry] = []
     var flowData: [ChartDataEntry] = []
-    var weight: Float = 0.0 // Add this line to define 'weight' member
+    var weight: ChartType = .weight // Modify 'weight' member to be of type 'ChartType'
 
-    // Add this method to define 'displayChart' method
-    func displayChart() {
+    // Modify 'displayChart' method to take an argument
+    func displayChart(_ type: ChartType) {
         // Implement your chart displaying logic here
     }
 
