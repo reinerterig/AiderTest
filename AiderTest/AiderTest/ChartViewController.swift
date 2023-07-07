@@ -20,8 +20,8 @@ class ChartViewController: UIViewController {
         chart.data = LineChartData(dataSet: dataSet)
     }
 
-    // Add 'toggleChartDisplay' method
-    func toggleChartDisplay() {
+    // Add 'toggleChartDisplay' method and make it visible to Objective-C
+    @objc func toggleChartDisplay() {
         weightChart.isHidden = !weightChart.isHidden
         flowChart.isHidden = !flowChart.isHidden
     }
