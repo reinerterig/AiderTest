@@ -42,10 +42,6 @@ class ChartViewController: UIViewController {
         }
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupUI()
-    }
 
     func setupUI() {
         // Create and setup the start button
