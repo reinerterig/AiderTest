@@ -91,11 +91,15 @@ class ChartViewController: UIViewController {
         // Update the weight chart
         let weightDataSet = LineChartDataSet(entries: weightData, label: "Weight")
         weightDataSet.colors = [NSUIColor.blue]
+        weightDataSet.drawCirclesEnabled = false // Disable dots
+        weightDataSet.mode = .cubicBezier // Enable cubic bezier curve
         weightChart.data = LineChartData(dataSet: weightDataSet)
 
         // Update the flow chart
         let flowDataSet = LineChartDataSet(entries: flowData, label: "Flow")
         flowDataSet.colors = [NSUIColor.red]
+        flowDataSet.drawCirclesEnabled = false // Disable dots
+        flowDataSet.mode = .cubicBezier // Enable cubic bezier curve
         flowChart.data = LineChartData(dataSet: flowDataSet)
     }
 
