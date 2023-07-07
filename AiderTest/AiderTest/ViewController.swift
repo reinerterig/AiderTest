@@ -8,14 +8,19 @@
 import UIKit
 import AcaiaSDK
 
-class ViewController: UIViewController, ScaleTableViewControllerDelegate {
-
-    var weightLabel: UILabel!
+    class ViewController: UIViewController, ScaleTableViewControllerDelegate {
+        var weightLabel: UILabel!
+        var connectButton: UIButton!
+        
+        deinit {
+            NotificationCenter.default.removeObserver(self)
+        }
     var connectButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
     }
 
     func setupUI() {
@@ -47,8 +52,9 @@ class ViewController: UIViewController, ScaleTableViewControllerDelegate {
         navigationController?.pushViewController(scaleTableViewController, animated: true)
     }
     
-    func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
-        weightLabel.text = "\(scale.weight)"
+    @objc func onWeightUpdate(_ notification: NSNotification) {
+        guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
+        weightLabel.text = "\(weight)"
     }
 }
 
