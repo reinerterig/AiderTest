@@ -121,7 +121,8 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
             // Append the new data to the chart data
             weightData.append(ChartDataEntry(x: time, y: Double(weight)))
             flowData.append(ChartDataEntry(x: time, y: Double(flow)))
-            
+            print("weight: ", weight)
+            print("flow: ", flow)
             // Update the chart
             DispatchQueue.main.async {
                 self.updateChart()
