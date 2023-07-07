@@ -15,7 +15,6 @@ import AcaiaSDK
         deinit {
             NotificationCenter.default.removeObserver(self)
         }
-    var connectButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +54,10 @@ import AcaiaSDK
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
         weightLabel.text = "\(weight)"
+    }
+    
+    func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
+        // Implement this method as required by the protocol
     }
 }
 
