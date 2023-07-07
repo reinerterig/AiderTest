@@ -6,6 +6,7 @@ class ChartViewController: UIViewController {
     var weightChart: LineChartView!
     var flowChart: LineChartView!
     var isLogging: Bool = false
+    var startTime: Date?
     var weightData: [ChartDataEntry] = []
     var flowData: [ChartDataEntry] = []
 
@@ -66,10 +67,13 @@ class ChartViewController: UIViewController {
         // Reset the chart data
         weightData = []
         flowData = []
+        // Store the start time
+        startTime = Date()
     }
 
     func stopLogging() {
-        // No changes needed here
+        // Reset the start time
+        startTime = nil
     }
 
     func logData(time: TimeInterval, weight: Float, flow: Float) {

@@ -107,7 +107,8 @@ import AcaiaSDK
 
             // If logging is enabled, update the chart data
             if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController, chartViewController.isLogging {
-                chartViewController.logData(time: timeDifference, weight: weight, flow: flowRate)
+                let loggingTime = currentTime.timeIntervalSince(chartViewController.startTime ?? currentTime)
+                chartViewController.logData(time: loggingTime, weight: weight, flow: flowRate)
             }
         }
         
