@@ -35,12 +35,12 @@ import AcaiaSDK
         weightLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(weightLabel)
 
-        // Create and setup the chart button
-        chartButton = UIButton(type: .system)
-        chartButton.setTitle("Chart", for: .normal)
-        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
-        chartButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(chartButton)
+//        // Create and setup the chart button
+//        chartButton = UIButton(type: .system)
+//        chartButton.setTitle("Chart", for: .normal)
+//        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
+//        chartButton.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(chartButton)
 
         // Create and setup the flow label
         flowLabel = UILabel()
@@ -72,14 +72,18 @@ import AcaiaSDK
 
         // Setup constraints
         NSLayoutConstraint.activate([
+            connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            disconnectButton.topAnchor.constraint(equalTo: connectButton.bottomAnchor, constant: 40),
+            disconnectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             weightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             weightLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             flowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             flowLabel.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 20),
             connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            chartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+//            chartButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
         
