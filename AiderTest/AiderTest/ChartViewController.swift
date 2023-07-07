@@ -1,7 +1,7 @@
 import UIKit
 import DGCharts // or the chart library you're using
 
-class ChartViewController: UIViewController {
+class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
     var startButton: UIButton!
     var weightChart: LineChartView!
     var flowChart: LineChartView!
