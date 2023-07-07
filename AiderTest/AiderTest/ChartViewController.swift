@@ -55,8 +55,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
         let menu = UIMenu(title: "", image: nil, identifier: nil, options: [], children: [toggleAction])
         return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in return menu })
     }
-        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil, actionProvider: { _ in return menu })
-    }
+    
 
 
     func setupUI() {
