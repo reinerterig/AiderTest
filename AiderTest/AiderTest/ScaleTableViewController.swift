@@ -1,7 +1,12 @@
 import UIKit
 import AcaiaSDK
 
+protocol ScaleTableViewControllerDelegate: AnyObject {
+    func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale)
+}
+
 class ScaleTableViewController: UITableViewController {
+    weak var delegate: ScaleTableViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +113,10 @@ class ScaleTableViewController: UITableViewController {
         
         _timerForConnectTimeOut?.invalidate()
         _timerForConnectTimeOut = nil
+        
+        if let scale = AcaiaManager.shared().connectedScale {
+            delegate?.scaleTableViewController(self, didSelect: scale)
+        }
         
         navigationController?.popViewController(animated: true)
     }

@@ -8,7 +8,7 @@
 import UIKit
 import AcaiaSDK
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ScaleTableViewControllerDelegate {
 
     var weightLabel: UILabel!
     var connectButton: UIButton!
@@ -43,7 +43,12 @@ class ViewController: UIViewController {
 
     @objc func connectButtonTapped() {
         let scaleTableViewController = ScaleTableViewController()
+        scaleTableViewController.delegate = self
         navigationController?.pushViewController(scaleTableViewController, animated: true)
+    }
+    
+    func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
+        weightLabel.text = "\(scale.weight)"
     }
 }
 
