@@ -10,6 +10,7 @@ class ScaleTableViewController: UITableViewController {
         title = "Scales"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         startScanning()
+        NotificationCenter.default.addObserver(self, selector: #selector(scaleDidConnect), name: NSNotification.Name.AcaiaScaleDidConnectedNotification, object: nil)
     }
 
     
@@ -49,3 +50,6 @@ class ScaleTableViewController: UITableViewController {
     }
 }
 
+    @objc func scaleDidConnect() {
+        // Handle scale connection
+    }
