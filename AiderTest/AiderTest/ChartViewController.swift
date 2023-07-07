@@ -43,7 +43,9 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate {
             let location = gesture.location(in: view)
             let interaction = UIContextMenuInteraction(delegate: self)
             view.addInteraction(interaction)
-            interaction.performPreviewActionCommit()
+            interaction.updateVisibleMenu { _ in
+                return self.contextMenuInteraction(interaction, configurationForMenuAtLocation: location)
+            }
         }
     }
 
