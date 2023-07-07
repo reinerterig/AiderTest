@@ -61,6 +61,13 @@ import AcaiaSDK
         disconnectButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(disconnectButton)
     }
+        // Create and setup the disconnect button
+        disconnectButton = UIButton(type: .system)
+        disconnectButton.setTitle("Disconnect", for: .normal)
+        disconnectButton.addTarget(self, action: #selector(disconnectButtonTapped), for: .touchUpInside)
+        disconnectButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(disconnectButton)
+    }
         // Create and setup the chart button
         chartButton = UIButton(type: .system)
         chartButton.setTitle("Chart", for: .normal)
@@ -84,6 +91,16 @@ import AcaiaSDK
         let scaleTableViewController = ScaleTableViewController()
         scaleTableViewController.delegate = self
         navigationController?.pushViewController(scaleTableViewController, animated: true)
+    }
+
+    @objc func disconnectButtonTapped() {
+        // Disconnect the scale
+        AcaiaManager.sharedManager().connectedScale?.disconnect()
+
+        // If the scale is not disconnected by the user, reconnect it
+        if AcaiaManager.sharedManager().connectedScale == nil {
+            AcaiaManager.sharedManager().startScan(5)
+        }
     }
 
     @objc func disconnectButtonTapped() {
