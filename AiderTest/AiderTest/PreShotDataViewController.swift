@@ -63,8 +63,9 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     func setupUI() {
         
         // Add UI elements to the view
-        self.view.addSubview(preWetLabel)
-        self.view.addSubview(preWetSwitch)
+        self.view.addSubview(doseLabel)
+        self.view.addSubview(doseButton)
+        self.view.addSubview(grindLabel)
         self.view.addSubview(grindPicker)
         self.view.addSubview(rpmLabel)
         self.view.addSubview(rpmPicker)
