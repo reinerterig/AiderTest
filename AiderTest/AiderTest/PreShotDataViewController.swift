@@ -37,11 +37,15 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     let nextButton = UIButton()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Setup UI elements here
-        setupUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
-    }
+             super.viewDidLoad()
+             // Setup UI elements here
+             setupUI()
+             NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+                                                                                                                                                                                                                
+             // Set default picker values
+             grindPicker.selectRow(Int(Grind * 2), inComponent: 0, animated: false)
+             rpmPicker.selectRow(Int((RPM - 100) / 100), inComponent: 0, animated: false)
+         }          
     
     func setupUI() {
         // Add UI elements to the view
