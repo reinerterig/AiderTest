@@ -59,12 +59,12 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func setupUI() {
+        // Set properties of UI elements
+        preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
+        
         // Add UI elements to the view
         self.view.addSubview(preWetLabel)
         self.view.addSubview(preWetSwitch)
-        
-        // Set properties of UI elements
-        preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
     
         self.view.addSubview(grindPicker)
         self.view.addSubview(rpmLabel)
