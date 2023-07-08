@@ -31,6 +31,7 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         super.viewDidLoad()
         // Setup UI elements here
         setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
     }
     
     func setupUI() {
@@ -131,6 +132,11 @@ extension PreShotDataViewController {
     
     @objc func doseButtonPressed() {
         doseSet = true
+    }
+
+    @objc func onWeightUpdate(_ notification: NSNotification) {
+        guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
+        updateDose(with: weight)
     }
 
     // This method should be called when new data is received from the scale
