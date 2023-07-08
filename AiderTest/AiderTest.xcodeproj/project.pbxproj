@@ -23,6 +23,7 @@
 		48BECBBF2A58E96100664BFB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBBE2A58E96100664BFB /* FirebaseFirestoreSwift */; };
 		48BECBC12A58E96100664BFB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBC02A58E96100664BFB /* FirebaseStorage */; };
 		48BECBC42A58E9F300664BFB /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBC32A58E9F300664BFB /* CSV */; };
+		48BECBC62A59174A00664BFB /* PreShotDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BECBC52A59174A00664BFB /* PreShotDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		48BECBAC2A57CE8100664BFB /* AcaiaSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AcaiaSDK.xcframework; sourceTree = "<group>"; };
 		48BECBB32A57D50900664BFB /* ScaleTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScaleTableViewController.swift; sourceTree = "<group>"; };
 		48BECBB52A57E4D500664BFB /* ChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
+		48BECBC52A59174A00664BFB /* PreShotDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreShotDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				48BECB972A57CE0600664BFB /* AppDelegate.swift */,
 				48BECBB52A57E4D500664BFB /* ChartViewController.swift */,
 				48BECB992A57CE0600664BFB /* SceneDelegate.swift */,
+				48BECBC52A59174A00664BFB /* PreShotDataViewController.swift */,
 				48BECB9B2A57CE0600664BFB /* ViewController.swift */,
 				48BECB9D2A57CE0600664BFB /* Main.storyboard */,
 				48BECBA02A57CE0700664BFB /* Assets.xcassets */,
@@ -184,6 +187,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BECBC62A59174A00664BFB /* PreShotDataViewController.swift in Sources */,
 				48BECBB42A57D50900664BFB /* ScaleTableViewController.swift in Sources */,
 				48BECB9C2A57CE0600664BFB /* ViewController.swift in Sources */,
 				48BECB982A57CE0600664BFB /* AppDelegate.swift in Sources */,

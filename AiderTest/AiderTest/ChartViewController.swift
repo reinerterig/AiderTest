@@ -11,6 +11,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
     var weightData: [ChartDataEntry] = []
     var flowData: [ChartDataEntry] = []
     var isDisplayingWeightData: Bool = true
+    var preData = false
     
     var menuOptions = ["Toggle"] // Add more options as needed
     var tapRecognizer: UITapGestureRecognizer?
@@ -31,18 +32,27 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             let scaleTableViewController = ScaleTableViewController()
             navigationController?.pushViewController(scaleTableViewController, animated: true)
         } else {
-            if isLogging {
-                isLogging = false
-                startButton.setTitle("Start", for: .normal)
-                stopLogging()
-            } else {
+            switch preData {
+            case true:
+                if isLogging {
+                    isLogging = false
+                    startButton.setTitle("Start", for: .normal)
+                    stopLogging()
+                } else {
+                    isLogging = true
+                    startButton.setTitle("Stop", for: .normal)
+                    startLogging()
+                }
+                preData = !preData
+            case false:
                 let preShotDataViewController = PreShotDataViewController()
                 navigationController?.pushViewController(preShotDataViewController, animated: true)
+                preData = !preData
+                
             }
         }
     }
 }
-
 
 //MARK: Setup UI
 extension ChartViewController {
