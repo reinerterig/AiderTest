@@ -73,16 +73,16 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             rpmLabel.centerYAnchor.constraint(equalTo: rpmPicker.centerYAnchor),
             preWetLabel.centerXAnchor.constraint(equalTo: preWetSwitch.centerXAnchor),
 //            // Dose button is 20 points from the Grind picker's leading edge
-            doseButton.trailingAnchor.constraint(equalTo: grindPicker.leadingAnchor, constant: -20),
+            doseButton.trailingAnchor.constraint(equalTo: grindPicker.leadingAnchor),
 //            // RPM picker is 20 points from the Grind picker's trailing edge
-            rpmPicker.leadingAnchor.constraint(equalTo: grindPicker.trailingAnchor, constant: 20),
+            rpmPicker.leadingAnchor.constraint(equalTo: grindPicker.trailingAnchor),
 //            // All labels are 20 points above their corresponding buttons or pickers
             doseLabel.bottomAnchor.constraint(equalTo: doseButton.topAnchor, constant: -20),
             grindLabel.bottomAnchor.constraint(equalTo: grindPicker.topAnchor, constant: -20),
             rpmLabel.bottomAnchor.constraint(equalTo: rpmPicker.topAnchor, constant: -20),
             preWetLabel.trailingAnchor.constraint(equalTo: preWetSwitch.leadingAnchor, constant: -20),
 //            // PreWet switch is 20 points below the Grind picker and centered in the screen
-            preWetSwitch.topAnchor.constraint(equalTo: grindPicker.bottomAnchor, constant: 20),
+            preWetSwitch.topAnchor.constraint(equalTo: grindPicker.bottomAnchor, constant: 80),
             preWetSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 //            // PreWet label is 20 points to the PreWet switch's leading edge
 //            // Next button is in the bottom right corner of the screen
@@ -95,9 +95,9 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     let rpmWidth = ("1800" as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width
                                                                                                                     
     // Set the width of the pickers
-    grindPicker.widthAnchor.constraint(equalToConstant: grindWidth).isActive = true
+    grindPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
     rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    rpmPicker.widthAnchor.constraint(equalToConstant: rpmWidth).isActive = true
+    rpmPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
     rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
