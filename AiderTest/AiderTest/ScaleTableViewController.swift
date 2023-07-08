@@ -89,12 +89,12 @@ extension ScaleTableViewController{
         if let scale = AcaiaManager.shared().connectedScale {
             delegate?.scaleTableViewController(self, didSelect: scale)
         }
-        
-        let chartViewController = ChartViewController.shared
-        chartViewController.isLogging = true
-        if !(navigationController?.viewControllers.contains(chartViewController) ?? false) {
-            navigationController?.popViewController(animated: true)
-        }
+        navigationController?.popViewController(animated: true)
+//        let chartViewController = ChartViewController.shared
+////        chartViewController.isLogging = true
+//        if !(navigationController?.viewControllers.contains(chartViewController) ?? false) {
+//            
+//        }
     }
     
     @objc private func _didFinishScan(notification: NSNotification) {
@@ -107,7 +107,7 @@ extension ScaleTableViewController{
         }
     }
     @objc private func _didDisconnected(notification: NSNotification) {
-        if let scale = AcaiaManager.shared().connectedScale {
+        if !AcaiaManager.shared().scaleList.isEmpty, let scale = AcaiaManager.shared().scaleList.first {
             scale.connect()
         }
     }

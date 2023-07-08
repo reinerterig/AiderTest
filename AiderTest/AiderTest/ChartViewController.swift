@@ -143,7 +143,7 @@ extension ChartViewController {
 
 extension ChartViewController {
     @objc func onDisconnect(_ notification: NSNotification) {
-        if let scale = AcaiaManager.shared().connectedScale {
+        if !AcaiaManager.shared().scaleList.isEmpty, let scale = AcaiaManager.shared().scaleList.first {
             scale.connect()
         }
     }
