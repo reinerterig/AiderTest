@@ -78,7 +78,9 @@ class PreShotDataViewController: UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
             // Grind picker is centered horizontally in the screen
-            grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            // Grind picker is centered vertically in the screen
+            grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
         ])
