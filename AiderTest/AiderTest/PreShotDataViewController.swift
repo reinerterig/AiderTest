@@ -26,15 +26,15 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
 
     func setupUI() {
         // Add UI elements to the view
-        view.addSubview(doseLabel)
-        view.addSubview(grindLabel)
-        view.addSubview(rpmLabel)
-        view.addSubview(preWetLabel)
-        view.addSubview(doseButton)
-        view.addSubview(grindPicker)
-        view.addSubview(rpmPicker)
-        view.addSubview(preWetSwitch)
-        view.addSubview(nextButton)
+        self.view.addSubview(doseLabel)
+        self.view.addSubview(grindLabel)
+        self.view.addSubview(rpmLabel)
+        self.view.addSubview(preWetLabel)
+        self.view.addSubview(doseButton)
+        self.view.addSubview(grindPicker)
+        self.view.addSubview(rpmPicker)
+        self.view.addSubview(preWetSwitch)
+        self.view.addSubview(nextButton)
 
         // Set the data source and delegate of the pickers
     grindPicker.dataSource = self
