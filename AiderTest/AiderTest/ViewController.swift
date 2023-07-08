@@ -30,12 +30,8 @@ import AcaiaSDK
         setupUI()
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
         
-        // Check if a scale is connected
-        if AcaiaManager.shared().connectedScale == nil {
-            let scaleTableViewController = ScaleTableViewController()
-            scaleTableViewController.delegate = self
-            navigationController?.pushViewController(scaleTableViewController, animated: true)
-        }
+        let chartViewController = ChartViewController()
+        navigationController?.pushViewController(chartViewController, animated: true)
     }
     
 
@@ -58,39 +54,6 @@ import AcaiaSDK
     var chartButton: UIButton!
     
     func setupUI() {
-   
-        // Create and setup the connect button
-        connectButton = UIButton(type: .system)
-        connectButton.setTitle("Connect", for: .normal)
-        connectButton.addTarget(self, action: #selector(connectButtonTapped), for: .touchUpInside)
-        connectButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(connectButton)
-
-        // Create and setup the disconnect button
-        disconnectButton = UIButton(type: .system)
-        disconnectButton.setTitle("Disconnect", for: .normal)
-        disconnectButton.addTarget(self, action: #selector(disconnectButtonTapped), for: .touchUpInside)
-        disconnectButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(disconnectButton)
-    
-       
-        // Create and setup the chart button
-        chartButton = UIButton(type: .system)
-        chartButton.setTitle("Chart", for: .normal)
-        chartButton.addTarget(self, action: #selector(chartButtonTapped), for: .touchUpInside)
-        chartButton.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(chartButton)
-
-        // Setup constraints
-        NSLayoutConstraint.activate([
-            connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            disconnectButton.topAnchor.constraint(equalTo: connectButton.bottomAnchor, constant: 40),
-            disconnectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-        ])
     }
         
     @objc func connectButtonTapped() {
