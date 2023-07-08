@@ -40,6 +40,7 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     grindPicker.dataSource = self
     grindPicker.delegate = self
     grindPicker.backgroundColor = .red
+    rpmPicker.isHidden = true
     rpmPicker.dataSource = self
     rpmPicker.delegate = self
     rpmPicker.backgroundColor = .blue
