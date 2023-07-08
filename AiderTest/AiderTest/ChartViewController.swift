@@ -206,3 +206,8 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
         chart.notifyDataSetChanged() // Add this line
     }
     }
+    @objc func onDisconnect(_ notification: NSNotification) {
+        if let scale = AcaiaManager.shared().connectedScale {
+            scale.connect()
+        }
+    }
