@@ -137,7 +137,8 @@ extension PreShotDataViewController {
 
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
-        updateDose(with: weight)
+        let truncatedWeight = round(weight * 1000) / 1000
+        updateDose(with: truncatedWeight)
     }
 
     // This method should be called when new data is received from the scale
