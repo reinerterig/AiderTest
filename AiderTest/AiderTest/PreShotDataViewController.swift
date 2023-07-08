@@ -1,7 +1,12 @@
 import UIKit
 
 class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    var Dose: Double = 0.0
+    var Dose: Double = 0.0 {
+        didSet {
+            doseLabel.text = "Dose: \(Dose)"
+        }
+    }
+    var doseSet: Bool = false
     var Grind: Double = 17.0
     var RPM: Double = 100.0
     var PreWet: Bool = false
@@ -11,7 +16,11 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     let rpmLabel = UILabel()
     let preWetLabel = UILabel()
     
-    let doseButton = UIButton()
+    let doseButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(doseButtonPressed), for: .touchUpInside)
+        return button
+    }()
     let grindPicker = UIPickerView()
     let rpmPicker = UIPickerView()
     let preWetSwitch = UISwitch()
@@ -120,6 +129,17 @@ extension PreShotDataViewController {
         }
     }
     
+    @objc func doseButtonPressed() {
+        doseSet = true
+    }
+
+    // This method should be called when new data is received from the scale
+    func updateDose(with weight: Double) {
+        if !doseSet {
+            Dose = weight
+        }
+    }
+
     // MARK: - UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
