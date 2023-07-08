@@ -5,112 +5,109 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     var Grind: Double = 17.0
     var RPM: Double = 100.0
     var PreWet: Bool = false
-
+    
     let doseLabel = UILabel()
     let grindLabel = UILabel()
     let rpmLabel = UILabel()
     let preWetLabel = UILabel()
-
+    
     let doseButton = UIButton()
     let grindPicker = UIPickerView()
     let rpmPicker = UIPickerView()
     let preWetSwitch = UISwitch()
-
+    
     let nextButton = UIButton()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Setup UI elements here
         setupUI()
     }
-
+    
     func setupUI() {
         // Add UI elements to the view
         self.view.addSubview(doseLabel)
-        self.view.addSubview(grindLabel)
-        self.view.addSubview(rpmLabel)
-        self.view.addSubview(preWetLabel)
         self.view.addSubview(doseButton)
+        self.view.addSubview(grindLabel)
         self.view.addSubview(grindPicker)
+        self.view.addSubview(rpmLabel)
         self.view.addSubview(rpmPicker)
+        self.view.addSubview(preWetLabel)
         self.view.addSubview(preWetSwitch)
         self.view.addSubview(nextButton)
-
+        
         // Set the data source and delegate of the pickers
-    grindPicker.dataSource = self
-    grindPicker.delegate = self
-    grindPicker.backgroundColor = .red
-    rpmPicker.isHidden = true
-    rpmPicker.dataSource = self
-    rpmPicker.delegate = self
-    rpmPicker.backgroundColor = .blue
+        grindPicker.dataSource = self
+        grindPicker.delegate = self
+        grindPicker.backgroundColor = .tertiarySystemBackground
+        rpmPicker.dataSource = self
+        rpmPicker.delegate = self
+        rpmPicker.backgroundColor = .tertiarySystemBackground
+        
         // Set properties of UI elements
         doseLabel.text = "Dose: \(Dose)"
         grindLabel.text = "Grind: \(Grind)"
+        grindLabel.textColor = .white
         rpmLabel.text = "RPM: \(RPM)"
         preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
         doseButton.setTitle("Set", for: .normal)
         nextButton.setTitle("Next", for: .normal)
         
         // Set up constraints
-        // Note: You'll need to replace these placeholder constraints with the actual constraints you want
         doseLabel.translatesAutoresizingMaskIntoConstraints = false
-        grindLabel.translatesAutoresizingMaskIntoConstraints = false
-        rpmLabel.translatesAutoresizingMaskIntoConstraints = false
-        preWetLabel.translatesAutoresizingMaskIntoConstraints = false
         doseButton.translatesAutoresizingMaskIntoConstraints = false
+        grindLabel.translatesAutoresizingMaskIntoConstraints = false
         grindPicker.translatesAutoresizingMaskIntoConstraints = false
+        rpmLabel.translatesAutoresizingMaskIntoConstraints = false
         rpmPicker.translatesAutoresizingMaskIntoConstraints = false
+        preWetLabel.translatesAutoresizingMaskIntoConstraints = false
         preWetSwitch.translatesAutoresizingMaskIntoConstraints = false
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-    grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-    grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            doseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            grindLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant:  -80),
+            grindLabel.centerXAnchor.constraint(equalTo: grindPicker.centerXAnchor),
+            
             rpmPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            doseLabel.centerYAnchor.constraint(equalTo: doseButton.centerYAnchor),
-            grindLabel.centerYAnchor.constraint(equalTo: grindPicker.centerYAnchor),
-            rpmLabel.centerYAnchor.constraint(equalTo: rpmPicker.centerYAnchor),
-            preWetLabel.centerXAnchor.constraint(equalTo: preWetSwitch.centerXAnchor),
-//            // Dose button is 20 points from the Grind picker's leading edge
-            doseButton.trailingAnchor.constraint(equalTo: grindPicker.leadingAnchor),
-//            // RPM picker is 20 points from the Grind picker's trailing edge
             rpmPicker.leadingAnchor.constraint(equalTo: grindPicker.trailingAnchor),
-//            // All labels are 20 points above their corresponding buttons or pickers
-            doseLabel.bottomAnchor.constraint(equalTo: doseButton.topAnchor, constant: -20),
-            grindLabel.bottomAnchor.constraint(equalTo: grindPicker.topAnchor, constant: -20),
-            rpmLabel.bottomAnchor.constraint(equalTo: rpmPicker.topAnchor, constant: -20),
+            rpmLabel.centerXAnchor.constraint(equalTo: rpmPicker.centerXAnchor),
+            rpmLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant:  -80),
+            
+            doseButton.trailingAnchor.constraint(equalTo: grindPicker.leadingAnchor, constant:  -40),
+            doseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            doseLabel.centerXAnchor.constraint(equalTo: doseButton.centerXAnchor),
+            doseLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant:  -80),
+            
+            preWetLabel.centerYAnchor.constraint(equalTo: preWetSwitch.centerYAnchor),
             preWetLabel.trailingAnchor.constraint(equalTo: preWetSwitch.leadingAnchor, constant: -20),
-//            // PreWet switch is 20 points below the Grind picker and centered in the screen
-            preWetSwitch.topAnchor.constraint(equalTo: grindPicker.bottomAnchor, constant: 80),
+            preWetSwitch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 100),
             preWetSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            // PreWet label is 20 points to the PreWet switch's leading edge
-//            // Next button is in the bottom right corner of the screen
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            
+            
+            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
         ])
         
-    // Calculate the width of the widest possible value for each picker
-    let grindWidth = ("30.0" as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width
-    let rpmWidth = ("1800" as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width
-                                                                                                                    
-    // Set the width of the pickers
-    grindPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
-    rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
-    rpmPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
-    rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        
+        // Set the width of the pickers
+        grindPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        grindPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        rpmPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
-
+    
     // MARK: - UIPickerViewDataSource
-
-   
+    
+    
 }
 extension PreShotDataViewController {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == grindPicker {
             // Grind ranges from 0 to 30 in 0.5 intervals, so there are 61 values
@@ -122,9 +119,9 @@ extension PreShotDataViewController {
             return 0
         }
     }
-
+    
     // MARK: - UIPickerViewDelegate
-
+    
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var title: String
         if pickerView == grindPicker {
