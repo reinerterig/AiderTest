@@ -120,7 +120,8 @@ class ScaleTableViewController: UITableViewController {
             delegate?.scaleTableViewController(self, didSelect: scale)
         }
         
-        navigationController?.popViewController(animated: true)
+        let chartViewController = ChartViewController()
+        navigationController?.pushViewController(chartViewController, animated: true)
     }
     
     @objc private func _didFinishScan(notification: NSNotification) {
