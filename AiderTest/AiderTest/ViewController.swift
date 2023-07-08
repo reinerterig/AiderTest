@@ -51,17 +51,6 @@ import AcaiaSDK
     var chartButton: UIButton!
     
     func setupUI() {
-        // Create and setup the weight label
-        weightLabel = UILabel()
-        weightLabel.text = "weight: "
-        weightLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(weightLabel)
-
-        // Create and setup the flow label
-        flowLabel = UILabel()
-        flowLabel.text = "flow: "
-        flowLabel.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(flowLabel)
    
         // Create and setup the connect button
         connectButton = UIButton(type: .system)
