@@ -169,8 +169,8 @@ extension PreShotDataViewController {
             // Grind ranges from 0 to 30 in 0.5 intervals
             title = String(format: "%.1f", Double(row) * 0.5)
         } else if pickerView == rpmPicker {
-            // RPM ranges from 100 to 1800 in 100 intervals
-            title = String(row * 100 + 100)
+            // RPM ranges from 600 to 1800 in 100 intervals
+            title = String(row * 100 + 600)
         } else {
             return nil
         }
