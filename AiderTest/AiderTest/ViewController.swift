@@ -31,11 +31,12 @@ import AcaiaSDK
     }
         override func viewWillAppear(_ animated: Bool) {
          
-            NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
-            
-            let chartViewController = ChartViewController()
-            navigationController?.pushViewController(chartViewController, animated: true)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDisconnect(_:)), name: NSNotification.Name(rawValue: AcaiaScaleDidDisconnected), object: nil)
+        let chartViewController = ChartViewController()
+        navigationController?.pushViewController(chartViewController, animated: true)
+    }
     
 
    
@@ -78,3 +79,8 @@ import AcaiaSDK
 
 
 
+    @objc func onDisconnect(_ notification: NSNotification) {
+        if let scale = AcaiaManager.shared().connectedScale {
+            scale.connect()
+        }
+    }

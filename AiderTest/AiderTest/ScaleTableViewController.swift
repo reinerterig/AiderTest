@@ -104,6 +104,10 @@ class ScaleTableViewController: UITableViewController {
                                                selector: #selector(_didFinishScan),
                                                name: .init(rawValue: AcaiaScaleDidFinishScan),
                                                object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(_didDisconnected),
+                                               name: .init(rawValue: AcaiaScaleDidDisconnected),
+                                               object: nil)
     }
     
     private func _removeScaleEventObservers() {
@@ -150,3 +154,8 @@ class ScaleTableViewController: UITableViewController {
         present(alert, animated: true)
     }
 }
+    @objc private func _didDisconnected(notification: NSNotification) {
+        if let scale = AcaiaManager.shared().connectedScale {
+            scale.connect()
+        }
+    }
