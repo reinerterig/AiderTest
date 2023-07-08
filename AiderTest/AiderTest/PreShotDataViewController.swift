@@ -18,10 +18,16 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             rpmLabel.text = "RPM: \(RPM)"
         }
     }
+    var PreWet: Bool = false {
+        didSet {
+            preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
+        }
+    }
     let doseLabel = UILabel()
     let grindLabel = UILabel()
     let rpmLabel = UILabel()
     let preWetLabel = UILabel()
+    
     
     let doseButton: UIButton = {
         let button = UIButton()
@@ -37,12 +43,8 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     
     let grindPicker = UIPickerView()
     let rpmPicker = UIPickerView()
-    var PreWet: Bool = false {
-        didSet {
-            preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
-        }
-    }
-        let preWetSwitch = UISwitch()
+    let preWetSwitch = UISwitch()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,13 +61,10 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     }
     
     func setupUI() {
-        // Set properties of UI elements
-        preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
         
         // Add UI elements to the view
         self.view.addSubview(preWetLabel)
         self.view.addSubview(preWetSwitch)
-    
         self.view.addSubview(grindPicker)
         self.view.addSubview(rpmLabel)
         self.view.addSubview(rpmPicker)
