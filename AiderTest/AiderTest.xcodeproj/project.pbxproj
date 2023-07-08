@@ -17,6 +17,12 @@
 		48BECBB22A57CE9C00664BFB /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBB12A57CE9C00664BFB /* DGCharts */; };
 		48BECBB42A57D50900664BFB /* ScaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BECBB32A57D50900664BFB /* ScaleTableViewController.swift */; };
 		48BECBB62A57E4D600664BFB /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BECBB52A57E4D500664BFB /* ChartViewController.swift */; };
+		48BECBB92A58E96100664BFB /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBB82A58E96100664BFB /* FirebaseAnalytics */; };
+		48BECBBB2A58E96100664BFB /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBBA2A58E96100664BFB /* FirebaseAnalyticsSwift */; };
+		48BECBBD2A58E96100664BFB /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBBC2A58E96100664BFB /* FirebaseFirestore */; };
+		48BECBBF2A58E96100664BFB /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBBE2A58E96100664BFB /* FirebaseFirestoreSwift */; };
+		48BECBC12A58E96100664BFB /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBC02A58E96100664BFB /* FirebaseStorage */; };
+		48BECBC42A58E9F300664BFB /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 48BECBC32A58E9F300664BFB /* CSV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +44,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48BECBBB2A58E96100664BFB /* FirebaseAnalyticsSwift in Frameworks */,
 				48BECBB22A57CE9C00664BFB /* DGCharts in Frameworks */,
 				48BECBAD2A57CE8100664BFB /* AcaiaSDK.xcframework in Frameworks */,
+				48BECBBD2A58E96100664BFB /* FirebaseFirestore in Frameworks */,
+				48BECBC12A58E96100664BFB /* FirebaseStorage in Frameworks */,
+				48BECBB92A58E96100664BFB /* FirebaseAnalytics in Frameworks */,
+				48BECBBF2A58E96100664BFB /* FirebaseFirestoreSwift in Frameworks */,
+				48BECBC42A58E9F300664BFB /* CSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +117,12 @@
 			name = AiderTest;
 			packageProductDependencies = (
 				48BECBB12A57CE9C00664BFB /* DGCharts */,
+				48BECBB82A58E96100664BFB /* FirebaseAnalytics */,
+				48BECBBA2A58E96100664BFB /* FirebaseAnalyticsSwift */,
+				48BECBBC2A58E96100664BFB /* FirebaseFirestore */,
+				48BECBBE2A58E96100664BFB /* FirebaseFirestoreSwift */,
+				48BECBC02A58E96100664BFB /* FirebaseStorage */,
+				48BECBC32A58E9F300664BFB /* CSV */,
 			);
 			productName = AiderTest;
 			productReference = 48BECB942A57CE0600664BFB /* AiderTest.app */;
@@ -136,6 +154,8 @@
 			mainGroup = 48BECB8B2A57CE0600664BFB;
 			packageReferences = (
 				48BECBB02A57CE9C00664BFB /* XCRemoteSwiftPackageReference "Charts" */,
+				48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				48BECBC22A58E9F300664BFB /* XCRemoteSwiftPackageReference "CSV" */,
 			);
 			productRefGroup = 48BECB952A57CE0600664BFB /* Products */;
 			projectDirPath = "";
@@ -403,6 +423,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.11.0;
+			};
+		};
+		48BECBC22A58E9F300664BFB /* XCRemoteSwiftPackageReference "CSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -410,6 +446,36 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 48BECBB02A57CE9C00664BFB /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = DGCharts;
+		};
+		48BECBB82A58E96100664BFB /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		48BECBBA2A58E96100664BFB /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		48BECBBC2A58E96100664BFB /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		48BECBBE2A58E96100664BFB /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		48BECBC02A58E96100664BFB /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBB72A58E96100664BFB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		48BECBC32A58E9F300664BFB /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 48BECBC22A58E9F300664BFB /* XCRemoteSwiftPackageReference "CSV" */;
+			productName = CSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

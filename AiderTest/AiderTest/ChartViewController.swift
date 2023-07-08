@@ -146,12 +146,6 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             isLogging = true
             startButton.setTitle("Stop", for: .normal)
             startLogging()
-            var chart: LineChartView!
-            var isLogging: Bool = false
-            var startTime: Date?
-            var weightData: [ChartDataEntry] = []
-            var flowData: [ChartDataEntry] = []
-            var isDisplayingWeightData: Bool = true
         }
     }
         

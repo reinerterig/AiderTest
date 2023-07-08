@@ -14,3 +14,4 @@ AiderTest/AiderTest.xcodeproj/xcuserdata/reinertwasserman.xcuserdatad/xcschemes/
 AiderTest/AiderTest.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 AiderTest/AiderTest.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 AiderTest/AiderTest.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved
+AiderTest/AiderTest/GoogleService-Info.plist
