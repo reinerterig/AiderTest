@@ -25,11 +25,18 @@ import AcaiaSDK
     var isShowingWeightChart = false
 
     override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        setupMenuTableView()
-//        addLongTapGesture()
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+        
+        // Check if a scale is connected
+        if AcaiaManager.shared().connectedScale == nil {
+            let scaleTableViewController = ScaleTableViewController()
+            scaleTableViewController.delegate = self
+            navigationController?.pushViewController(scaleTableViewController, animated: true)
+        }
+    }
     }
 
     func setupMenuTableView() {
