@@ -36,9 +36,8 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
                 startButton.setTitle("Start", for: .normal)
                 stopLogging()
             } else {
-                isLogging = true
-                startButton.setTitle("Stop", for: .normal)
-                startLogging()
+                let preShotDataViewController = PreShotDataViewController()
+                navigationController?.pushViewController(preShotDataViewController, animated: true)
             }
         }
     }
