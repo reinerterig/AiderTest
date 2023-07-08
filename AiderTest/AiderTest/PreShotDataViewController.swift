@@ -8,8 +8,16 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
     }
     var doseSet: Bool = false
-    var Grind: Double = 17.0
-    var RPM: Double = 100.0
+    var Grind: Double = 17.0 {
+        didSet {
+            grindLabel.text = "Grind: \(Grind)"
+        }
+    }
+    var RPM: Double = 100.0 {
+        didSet {
+            rpmLabel.text = "RPM: \(RPM)"
+        }
+    }
     var PreWet: Bool = false
     
     let doseLabel = UILabel()
