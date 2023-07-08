@@ -8,11 +8,7 @@
 import UIKit
 import AcaiaSDK
 
-    class ViewController: UIViewController, ScaleTableViewControllerDelegate, UITableViewDelegate, UITableViewDataSource {
-        var weightLabel: UILabel!
-        var connectButton: UIButton!
-        var disconnectButton: UIButton!
-        var flowLabel: UILabel!
+    class ViewController: UIViewController  {
         var previousWeight: Float = 0
         var previousTime: Date = Date()
         var flowRates: [Float] = []
@@ -20,35 +16,26 @@ import AcaiaSDK
         deinit {
             NotificationCenter.default.removeObserver(self)
         }
-    var menuTableView: UITableView!
-    var menuOptions: [String] = ["Toggle"]
-    var isShowingWeightChart = false
-
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
         override func viewWillAppear(_ animated: Bool) {
-         
-    override func viewWillAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDisconnect(_:)), name: NSNotification.Name(rawValue: AcaiaScaleDidDisconnected), object: nil)
         let chartViewController = ChartViewController()
         navigationController?.pushViewController(chartViewController, animated: true)
     }
-    
+}
 
-   
-        
-   
 
-    @objc func chartButtonTapped() {
-        let chartViewController = ChartViewController()
-        navigationController?.pushViewController(chartViewController, animated: true)
+extension ViewController{
+    @objc func onDisconnect(_ notification: NSNotification) {
+        if let scale = AcaiaManager.shared().connectedScale {
+            scale.connect()
+        }
     }
-    
-
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
        
@@ -76,11 +63,3 @@ import AcaiaSDK
         previousTime = currentTime
     }
 }
-
-
-
-    @objc func onDisconnect(_ notification: NSNotification) {
-        if let scale = AcaiaManager.shared().connectedScale {
-            scale.connect()
-        }
-    }
