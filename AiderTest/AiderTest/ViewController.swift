@@ -24,7 +24,7 @@ import AcaiaSDK
     var menuOptions: [String] = ["Toggle"]
     var isShowingWeightChart = false
 
-    override func viewDidLoad() {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -37,7 +37,7 @@ import AcaiaSDK
             navigationController?.pushViewController(scaleTableViewController, animated: true)
         }
     }
-    }
+    
 
     func setupMenuTableView() {
         menuTableView = UITableView()
@@ -87,10 +87,6 @@ import AcaiaSDK
             connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             disconnectButton.topAnchor.constraint(equalTo: connectButton.bottomAnchor, constant: 40),
             disconnectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            weightLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            weightLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            flowLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            flowLabel.topAnchor.constraint(equalTo: weightLabel.bottomAnchor, constant: 20),
             connectButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             connectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             chartButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
@@ -121,7 +117,7 @@ import AcaiaSDK
 
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Float else { return }
-        weightLabel.text = "weight: \(weight)"
+       
         
         let currentTime = Date()
         let timeDifference = currentTime.timeIntervalSince(previousTime)
@@ -133,7 +129,7 @@ import AcaiaSDK
                 flowRates.removeFirst()
             }
             let averageFlowRate = flowRates.reduce(0, +) / Float(flowRates.count)
-            flowLabel.text = "flow: " + String(format: "%.2f g/s", averageFlowRate)
+           
 
             // If logging is enabled, update the chart data
             if let chartViewController = navigationController?.viewControllers.first(where: { $0 is ChartViewController }) as? ChartViewController, chartViewController.isLogging {
