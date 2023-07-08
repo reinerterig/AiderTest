@@ -1,5 +1,6 @@
 import UIKit
 import DGCharts // or the chart library you're using
+import AcaiaSDK
 
 class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UITableViewDelegate,UITableViewDataSource {
     var startButton: UIButton!
@@ -136,16 +137,16 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
     }
        
     
-
+    
     @objc func startButtonTapped() {
-        if isLogging {
-            isLogging = false
-            startButton.setTitle("Start", for: .normal)
-            stopLogging()
+        if AcaiaManager.shared().connectedScale == nil {
+            let scaleTableViewController = ScaleTableViewController()
+            navigationController?.pushViewController(scaleTableViewController, animated: true)
         } else {
-            if AcaiaManager.shared().connectedScale == nil {
-                let scaleTableViewController = ScaleTableViewController()
-                navigationController?.pushViewController(scaleTableViewController, animated: true)
+            if isLogging {
+                isLogging = false
+                startButton.setTitle("Start", for: .normal)
+                stopLogging()
             } else {
                 isLogging = true
                 startButton.setTitle("Stop", for: .normal)
@@ -176,8 +177,7 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             // Append the new data to the chart data
             weightData.append(ChartDataEntry(x: time, y: Double(weight)))
             flowData.append(ChartDataEntry(x: time, y: Double(flow)))
-            print("weight: ", weight)
-            print("flow: ", flow)
+            
             // Update the chart
             DispatchQueue.main.async {
                 self.updateChart()

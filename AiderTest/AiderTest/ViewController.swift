@@ -27,50 +27,20 @@ import AcaiaSDK
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
         
-        let chartViewController = ChartViewController()
-        navigationController?.pushViewController(chartViewController, animated: true)
     }
-    
-
-    func setupMenuTableView() {
-        menuTableView = UITableView()
-        menuTableView.delegate = self
-        menuTableView.dataSource = self
-        menuTableView.isHidden = true
-        menuTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MenuOptionCell")
-        view.addSubview(menuTableView)
-    }
-
-
-
-    func showMenuTableView(at location: CGPoint) {
-        menuTableView.frame = CGRect(x: location.x, y: location.y, width: 200, height: CGFloat(menuOptions.count * 44))
-        menuTableView.isHidden = false
-    }
-
-    var chartButton: UIButton!
-    
-    func setupUI() {
-    }
-        
-    @objc func connectButtonTapped() {
-        let scaleTableViewController = ScaleTableViewController()
-        scaleTableViewController.delegate = self
-        navigationController?.pushViewController(scaleTableViewController, animated: true)
-    }
-
-    @objc func disconnectButtonTapped() {
-        // Disconnect the scale
-        AcaiaManager.shared().connectedScale?.disconnect()
-
-        // If the scale is not disconnected by the user, reconnect it
-        if AcaiaManager.shared().connectedScale == nil {
-            AcaiaManager.shared().startScan(5)
+        override func viewWillAppear(_ animated: Bool) {
+         
+            NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+            
+            let chartViewController = ChartViewController()
+            navigationController?.pushViewController(chartViewController, animated: true)
         }
-    }
+    
+
+   
+        
+   
 
     @objc func chartButtonTapped() {
         let chartViewController = ChartViewController()
@@ -103,29 +73,6 @@ import AcaiaSDK
         
         previousWeight = weight
         previousTime = currentTime
-    }
-    
-    func scaleTableViewController(_ controller: ScaleTableViewController, didSelect scale: AcaiaScale) {
-        // Implement this method as required by the protocol
-    }
-
-    // MARK: - UITableViewDelegate and UITableViewDataSource methods
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return menuOptions.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuOptionCell", for: indexPath)
-        cell.textLabel?.text = menuOptions[indexPath.row]
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if menuOptions[indexPath.row] == "Toggle" {
-//            toggleChartDisplay()
-        }
-        tableView.isHidden = true
     }
 }
 
