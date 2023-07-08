@@ -18,9 +18,6 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             rpmLabel.text = "RPM: \(RPM)"
         }
     }
-    
-    var PreWet: Bool = false
-    
     let doseLabel = UILabel()
     let grindLabel = UILabel()
     let rpmLabel = UILabel()
@@ -31,15 +28,21 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         button.addTarget(self, action: #selector(doseButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+    let nextButton: UIButton = {
+        let button = UIButton()
+        button.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        return button
+    }()
+    
     let grindPicker = UIPickerView()
+    let rpmPicker = UIPickerView()
     var PreWet: Bool = false {
         didSet {
             preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
         }
     }
-    
-    let preWetLabel = UILabel()
-    let preWetSwitch = UISwitch()
+        let preWetSwitch = UISwitch()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +65,7 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         
         // Set properties of UI elements
         preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
-    }
     
-    @objc func preWetSwitchChanged(_ sender: UISwitch) {
-        PreWet = sender.isOn
-    }
         self.view.addSubview(grindPicker)
         self.view.addSubview(rpmLabel)
         self.view.addSubview(rpmPicker)
@@ -136,10 +135,6 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         rpmPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
         rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
-    
-    // MARK: - UIPickerViewDataSource
-    
-    
 }
 
 
@@ -164,6 +159,13 @@ extension PreShotDataViewController {
     @objc func doseButtonPressed() {
         doseSet = true
     }
+    
+    @objc func nextButtonPressed() {
+    }
+    
+    @objc func preWetSwitchChanged(_ sender: UISwitch) {
+    PreWet = sender.isOn
+}
     
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
