@@ -64,8 +64,8 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         nextButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+    grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100),
+    grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             doseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             rpmPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             doseLabel.centerYAnchor.constraint(equalTo: doseButton.centerYAnchor),
