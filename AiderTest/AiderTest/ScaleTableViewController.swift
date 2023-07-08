@@ -92,7 +92,9 @@ extension ScaleTableViewController{
         
         let chartViewController = ChartViewController.shared
         chartViewController.isLogging = true
-        navigationController?.pushViewController(chartViewController, animated: true)
+        if !(navigationController?.viewControllers.contains(chartViewController) ?? false) {
+            navigationController?.pushViewController(chartViewController, animated: true)
+        }
     }
     
     @objc private func _didFinishScan(notification: NSNotification) {

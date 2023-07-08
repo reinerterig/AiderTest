@@ -25,7 +25,9 @@ import AcaiaSDK
         NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onDisconnect(_:)), name: NSNotification.Name(rawValue: AcaiaScaleDidDisconnected), object: nil)
         let chartViewController = ChartViewController.shared
-        navigationController?.pushViewController(chartViewController, animated: true)
+        if !(navigationController?.viewControllers.contains(chartViewController) ?? false) {
+            navigationController?.pushViewController(chartViewController, animated: true)
+        }
     }
 }
 
