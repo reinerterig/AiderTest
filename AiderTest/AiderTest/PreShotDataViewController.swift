@@ -57,8 +57,8 @@ class PreShotDataViewController: UIViewController {
         nextButton.translatesAutoresizingMaskIntoConstraints = false
 
         // Add constraints here
-        NSLayoutConstraint.activate([
-            // Dose button is 20 points from the Grind picker's leading edge
+       
+            
         NSLayoutConstraint.activate([
             // Dose button is 20 points from the Grind picker's leading edge
             doseButton.leadingAnchor.constraint(equalTo: grindPicker.leadingAnchor, constant: -20),
@@ -77,12 +77,13 @@ class PreShotDataViewController: UIViewController {
             // Next button is in the bottom right corner of the screen
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            // Grind picker is centered horizontally in the screen
+            // centered horizontally in the screen
             grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            rpmPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
             // Grind picker is centered vertically in the screen
             grindPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
         ])
     }
 }
