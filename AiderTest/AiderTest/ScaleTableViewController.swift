@@ -102,7 +102,7 @@ extension ScaleTableViewController{
         tableView.reloadData()
         
         // Automatically connect to the first scale found
-        if let scale = AcaiaManager.shared().scaleList.first {
+        if !AcaiaManager.shared().scaleList.isEmpty, let scale = AcaiaManager.shared().scaleList.first {
             scale.connect()
         }
     }
