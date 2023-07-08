@@ -89,7 +89,7 @@ extension ChartViewController {
         updateChart()
     }
     
-    func startLogging() {
+    @objc func startLogging() {
         weightData = []
         flowData = []
         startTime = Date()

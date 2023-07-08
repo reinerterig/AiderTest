@@ -91,6 +91,7 @@ extension ScaleTableViewController{
         }
         
         let chartViewController = ChartViewController()
+        chartViewController.startLogging()
         navigationController?.pushViewController(chartViewController, animated: true)
     }
     
