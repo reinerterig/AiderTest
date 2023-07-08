@@ -16,12 +16,13 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
  
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+        setUpObservers()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUI()
-        setUpObservers()
+       
     }
   
     @objc func startButtonTapped() {
