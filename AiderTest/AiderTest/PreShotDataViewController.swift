@@ -164,4 +164,16 @@ extension PreShotDataViewController {
         return NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
     }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if pickerView == grindPicker {
+            // Grind ranges from 0 to 30 in 0.5 intervals
+            Grind = Double(row) * 0.5
+            grindLabel.text = "Grind: \(Grind)"
+        } else if pickerView == rpmPicker {
+            // RPM ranges from 100 to 1800 in 100 intervals
+            RPM = Double(row * 100 + 100)
+            rpmLabel.text = "RPM: \(RPM)"
+        }
+    }
+    
 }
