@@ -66,6 +66,10 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             doseButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             rpmPicker.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            doseLabel.centerYAnchor.constraint(equalTo: doseButton.centerYAnchor),
+            grindLabel.centerYAnchor.constraint(equalTo: grindPicker.centerYAnchor),
+            rpmLabel.centerYAnchor.constraint(equalTo: rpmPicker.centerYAnchor),
+            preWetLabel.centerXAnchor.constraint(equalTo: preWetSwitch.centerXAnchor),
 //            // Dose button is 20 points from the Grind picker's leading edge
             doseButton.trailingAnchor.constraint(equalTo: grindPicker.leadingAnchor, constant: -20),
 //            // RPM picker is 20 points from the Grind picker's trailing edge
@@ -83,6 +87,14 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
+        
+        // Calculate the width of the widest possible value for each picker
+                 let grindWidth = ("30.0" as NSString).size(withAttributes: [NSAttributedString.Key.font: grindPicker.font]).width
+                 let rpmWidth = ("1800" as NSString).size(withAttributes: [NSAttributedString.Key.font: rpmPicker.font]).width
+                                                                                                                                                                                                                    
+                 // Set the width of the pickers
+                 grindPicker.widthAnchor.constraint(equalToConstant: grindWidth).isActive = true
+                 rpmPicker.widthAnchor.constraint(equalToConstant: rpmWidth).isActive = true                  
     }
 
     // MARK: - UIPickerViewDataSource
