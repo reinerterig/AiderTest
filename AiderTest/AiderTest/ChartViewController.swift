@@ -3,6 +3,7 @@ import DGCharts
 import AcaiaSDK
 
 class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UITableViewDelegate,UITableViewDataSource {
+    static let shared = ChartViewController()
     var startButton: UIButton!
     var chart: LineChartView!
     var isLogging: Bool = false

@@ -90,8 +90,8 @@ extension ScaleTableViewController{
             delegate?.scaleTableViewController(self, didSelect: scale)
         }
         
-        let chartViewController = ChartViewController()
-        chartViewController.startLogging()
+        let chartViewController = ChartViewController.shared
+        chartViewController.isLogging = true
         navigationController?.pushViewController(chartViewController, animated: true)
     }
     
