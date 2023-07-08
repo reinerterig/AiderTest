@@ -13,11 +13,12 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             grindLabel.text = "Grind: \(Grind)"
         }
     }
-    var RPM: Double = 100.0 {
+    var RPM: Double = 700.0 {
         didSet {
             rpmLabel.text = "RPM: \(RPM)"
         }
     }
+    
     var PreWet: Bool = false
     
     let doseLabel = UILabel()
@@ -37,15 +38,15 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
     let nextButton = UIButton()
     
     override func viewDidLoad() {
-             super.viewDidLoad()
-             // Setup UI elements here
-             setupUI()
-             NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
-                                                                                                                                                                                                                
-             // Set default picker values
-             grindPicker.selectRow(Int(Grind * 2), inComponent: 0, animated: false)
-             rpmPicker.selectRow(Int((RPM - 100) / 100), inComponent: 0, animated: false)
-         }          
+        super.viewDidLoad()
+        // Setup UI elements here
+        setupUI()
+        NotificationCenter.default.addObserver(self, selector: #selector(onWeightUpdate(_:)), name: NSNotification.Name(rawValue: AcaiaScaleWeight), object: nil)
+        
+        // Set default picker values
+        grindPicker.selectRow(Int(Grind * 2), inComponent: 0, animated: false)
+        rpmPicker.selectRow(Int((RPM - 600) / 100), inComponent: 0, animated: false)
+    }
     
     func setupUI() {
         // Add UI elements to the view
@@ -137,7 +138,7 @@ extension PreShotDataViewController {
             return 61
         } else if pickerView == rpmPicker {
             // RPM ranges from 100 to 1800 in 100 intervals, so there are 18 values
-            return 18
+            return 13
         } else {
             return 0
         }
@@ -146,20 +147,20 @@ extension PreShotDataViewController {
     @objc func doseButtonPressed() {
         doseSet = true
     }
-
+    
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
         let truncatedWeight = round(weight * 1000) / 1000
         updateDose(with: truncatedWeight)
     }
-
+    
     // This method should be called when new data is received from the scale
     func updateDose(with weight: Double) {
         if !doseSet {
             Dose = weight
         }
     }
-
+    
     // MARK: - UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -181,11 +182,10 @@ extension PreShotDataViewController {
             // Grind ranges from 0 to 30 in 0.5 intervals
             Grind = Double(row) * 0.5
             grindLabel.text = "Grind: \(Grind)"
-        } else if pickerView == rpmPicker {
-            // RPM ranges from 100 to 1800 in 100 intervals
-            RPM = Double(row * 100 + 100)
+        } else  if pickerView == rpmPicker {
+            // RPM ranges from 600 to 1800 in 100 intervals
+            RPM = Double(row * 100 + 600)
             rpmLabel.text = "RPM: \(RPM)"
         }
     }
-    
 }
