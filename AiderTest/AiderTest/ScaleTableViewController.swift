@@ -93,7 +93,7 @@ extension ScaleTableViewController{
         let chartViewController = ChartViewController.shared
         chartViewController.isLogging = true
         if !(navigationController?.viewControllers.contains(chartViewController) ?? false) {
-            navigationController?.pushViewController(chartViewController, animated: true)
+            navigationController?.popViewController(animated: true)
         }
     }
     
