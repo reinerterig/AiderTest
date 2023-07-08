@@ -25,6 +25,37 @@ class PreShotDataViewController: UIViewController {
     }
 
     func setupUI() {
-        // Add UI elements to the view and setup constraints
+        // Add UI elements to the view
+        view.addSubview(doseLabel)
+        view.addSubview(grindLabel)
+        view.addSubview(rpmLabel)
+        view.addSubview(preWetLabel)
+        view.addSubview(doseButton)
+        view.addSubview(grindPicker)
+        view.addSubview(rpmPicker)
+        view.addSubview(preWetSwitch)
+        view.addSubview(nextButton)
+
+        // Set properties of UI elements
+        doseLabel.text = "Dose: \(Dose)"
+        grindLabel.text = "Grind: \(Grind)"
+        rpmLabel.text = "RPM: \(RPM)"
+        preWetLabel.text = "PreWet: \(PreWet ? "On" : "Off")"
+        doseButton.setTitle("Set", for: .normal)
+        nextButton.setTitle("Next", for: .normal)
+
+        // Set up constraints
+        // Note: You'll need to replace these placeholder constraints with the actual constraints you want
+        doseLabel.translatesAutoresizingMaskIntoConstraints = false
+        grindLabel.translatesAutoresizingMaskIntoConstraints = false
+        rpmLabel.translatesAutoresizingMaskIntoConstraints = false
+        preWetLabel.translatesAutoresizingMaskIntoConstraints = false
+        doseButton.translatesAutoresizingMaskIntoConstraints = false
+        grindPicker.translatesAutoresizingMaskIntoConstraints = false
+        rpmPicker.translatesAutoresizingMaskIntoConstraints = false
+        preWetSwitch.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+
+        // Add constraints here
     }
 }
