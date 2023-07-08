@@ -59,13 +59,15 @@ class ScaleTableViewController: UITableViewController {
         _activityIndicatorView.startAnimating()
         
         let scale = AcaiaManager.shared().scaleList[indexPath.row]
-        scale.connect()
+        if scale.name == "YourScaleName" {
+            scale.connect()
         
-        _timerForConnectTimeOut = Timer.scheduledTimer(timeInterval: 10.0,
-                                                       target: self,
-                                                       selector: #selector(_connectTimeOut(_:)),
-                                                       userInfo: nil,
-                                                       repeats: false)
+            _timerForConnectTimeOut = Timer.scheduledTimer(timeInterval: 10.0,
+                                                           target: self,
+                                                           selector: #selector(_connectTimeOut(_:)),
+                                                           userInfo: nil,
+                                                           repeats: false)
+        }
     }
     
     
