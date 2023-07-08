@@ -143,9 +143,14 @@ class ChartViewController: UIViewController, UIContextMenuInteractionDelegate,UI
             startButton.setTitle("Start", for: .normal)
             stopLogging()
         } else {
-            isLogging = true
-            startButton.setTitle("Stop", for: .normal)
-            startLogging()
+            if AcaiaManager.shared().connectedScale == nil {
+                let scaleTableViewController = ScaleTableViewController()
+                navigationController?.pushViewController(scaleTableViewController, animated: true)
+            } else {
+                isLogging = true
+                startButton.setTitle("Stop", for: .normal)
+                startLogging()
+            }
         }
     }
         
