@@ -127,8 +127,8 @@ class ScaleTableViewController: UITableViewController {
         tableView.refreshControl?.endRefreshing()
         tableView.reloadData()
         
-        // Automatically connect to the scale if it's found
-        if let scale = AcaiaManager.shared().scaleList.first(where: { $0.name == "YourScaleName" }) {
+        // Automatically connect to the first scale found
+        if let scale = AcaiaManager.shared().scaleList.first {
             scale.connect()
         }
     }
