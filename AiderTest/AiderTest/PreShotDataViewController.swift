@@ -88,13 +88,13 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
         ])
         
-        // Calculate the width of the widest possible value for each picker
-                 let grindWidth = ("30.0" as NSString).size(withAttributes: [NSAttributedString.Key.font: grindPicker.font]).width
-                 let rpmWidth = ("1800" as NSString).size(withAttributes: [NSAttributedString.Key.font: rpmPicker.font]).width
-                                                                                                                                                                                                                    
-                 // Set the width of the pickers
-                 grindPicker.widthAnchor.constraint(equalToConstant: grindWidth).isActive = true
-                 rpmPicker.widthAnchor.constraint(equalToConstant: rpmWidth).isActive = true                  
+    // Calculate the width of the widest possible value for each picker
+    let grindWidth = ("30.0" as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width
+    let rpmWidth = ("1800" as NSString).size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17.0)]).width
+                                                                                                                    
+    // Set the width of the pickers
+    grindPicker.widthAnchor.constraint(equalToConstant: grindWidth).isActive = true
+    rpmPicker.widthAnchor.constraint(equalToConstant: rpmWidth).isActive = true
     }
 
     // MARK: - UIPickerViewDataSource
