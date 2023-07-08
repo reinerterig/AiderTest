@@ -37,10 +37,12 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         view.addSubview(nextButton)
 
         // Set the data source and delegate of the pickers
-        grindPicker.dataSource = self
-        grindPicker.delegate = self
-        rpmPicker.dataSource = self
-        rpmPicker.delegate = self
+    grindPicker.dataSource = self
+    grindPicker.delegate = self
+    grindPicker.backgroundColor = .red
+    rpmPicker.dataSource = self
+    rpmPicker.delegate = self
+    rpmPicker.backgroundColor = .blue
         // Set properties of UI elements
         doseLabel.text = "Dose: \(Dose)"
         grindLabel.text = "Grind: \(Grind)"
@@ -94,7 +96,9 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
                                                                                                                     
     // Set the width of the pickers
     grindPicker.widthAnchor.constraint(equalToConstant: grindWidth).isActive = true
+    rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
     rpmPicker.widthAnchor.constraint(equalToConstant: rpmWidth).isActive = true
+    rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 
     // MARK: - UIPickerViewDataSource
