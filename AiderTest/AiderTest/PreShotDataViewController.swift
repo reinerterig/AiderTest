@@ -59,26 +59,27 @@ class PreShotDataViewController: UIViewController {
         // Add constraints here
         NSLayoutConstraint.activate([
             // Dose button is 20 points from the Grind picker's leading edge
+        NSLayoutConstraint.activate([
+            // Dose button is 20 points from the Grind picker's leading edge
             doseButton.leadingAnchor.constraint(equalTo: grindPicker.leadingAnchor, constant: -20),
-            
             // RPM picker is 20 points from the Grind picker's trailing edge
             rpmPicker.leadingAnchor.constraint(equalTo: grindPicker.trailingAnchor, constant: 20),
-            
             // All labels are 20 points above their corresponding buttons or pickers
             doseLabel.bottomAnchor.constraint(equalTo: doseButton.topAnchor, constant: -20),
             grindLabel.bottomAnchor.constraint(equalTo: grindPicker.topAnchor, constant: -20),
             rpmLabel.bottomAnchor.constraint(equalTo: rpmPicker.topAnchor, constant: -20),
             preWetLabel.bottomAnchor.constraint(equalTo: preWetSwitch.topAnchor, constant: -20),
-            
             // PreWet switch is 20 points below the Grind picker and centered in the screen
             preWetSwitch.topAnchor.constraint(equalTo: grindPicker.bottomAnchor, constant: 20),
             preWetSwitch.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
             // PreWet label is 20 points to the PreWet switch's leading edge
             preWetLabel.trailingAnchor.constraint(equalTo: preWetSwitch.leadingAnchor, constant: -20),
-            
             // Next button is in the bottom right corner of the screen
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
+            // Grind picker is centered horizontally in the screen
+            grindPicker.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20)
         ])
     }
