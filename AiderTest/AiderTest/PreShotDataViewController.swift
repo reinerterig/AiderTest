@@ -9,7 +9,6 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         }
     }
     var doseSet: Bool = false
-    var updateDose: Bool = true
     var Grind: Double = 17.0 {
         didSet {
             grindLabel.text = "Grind: \(Grind)"
@@ -159,8 +158,8 @@ extension PreShotDataViewController {
     }
     
     @objc func doseButtonPressed() {
-        doseSet = true
-        updateDose = false
+        doseSet = !doseSet
+        print("dose")
     }
     
     @objc func nextButtonPressed() {
@@ -179,7 +178,7 @@ extension PreShotDataViewController {
     
     // This method should be called when new data is received from the scale
     func updateDose(with weight: Double) {
-        if !doseSet && updateDose {
+        if !doseSet  {
             Dose = weight
         }
     }
