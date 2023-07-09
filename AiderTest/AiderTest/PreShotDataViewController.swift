@@ -159,7 +159,7 @@ extension PreShotDataViewController {
     
     @objc func doseButtonPressed() {
         doseSet = !doseSet
-        print("dose")
+        print(doseSet)
     }
     
     @objc func nextButtonPressed() {
@@ -172,18 +172,12 @@ extension PreShotDataViewController {
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
         let truncatedWeight = round(weight * 1000) / 1000
-        if updateDose {
+        if !doseSet {
             Dose = truncatedWeight
         }
-        updateDose(with: truncatedWeight)
     }
     
-    // This method should be called when new data is received from the scale
-    func updateDose(with weight: Double) {
-        if !doseSet  {
-            Dose = weight
-        }
-    }
+  
     
     
     // MARK: - UIPickerViewDelegate
