@@ -135,6 +135,9 @@ class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPic
         grindPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
         rpmPicker.widthAnchor.constraint(equalToConstant: 100).isActive = true
         rpmPicker.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        
+        doseButton.widthAnchor.constraint(equalToConstant: doseButton.frame.size.width + 100).isActive = true
+        doseButton.heightAnchor.constraint(equalToConstant: doseButton.frame.size.height + 50).isActive = true
     }
 }
 
