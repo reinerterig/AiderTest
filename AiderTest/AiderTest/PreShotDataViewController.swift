@@ -2,6 +2,7 @@ import UIKit
 import AcaiaSDK
 
 class PreShotDataViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+    
     var Dose: Double = 0.0 {
         didSet {
             doseLabel.text = "Dose: \(Dose)"
@@ -170,6 +171,7 @@ extension PreShotDataViewController {
     @objc func onWeightUpdate(_ notification: NSNotification) {
         guard let weight = notification.userInfo?[AcaiaScaleUserInfoKeyWeight] as? Double else { return }
         let truncatedWeight = round(weight * 1000) / 1000
+        Dose = truncatedWeight
         updateDose(with: truncatedWeight)
     }
     
@@ -179,6 +181,7 @@ extension PreShotDataViewController {
             Dose = weight
         }
     }
+    
     
     // MARK: - UIPickerViewDelegate
     
